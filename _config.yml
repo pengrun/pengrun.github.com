@@ -1,0 +1,81 @@
+# Hexo Configuration
+## Docs: http://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: Mr.Peng's Blog #标题
+subtitle: 入猿未深，还待修行 #副标题
+description: 专注iOS 365 * 2 Days #站点描述，给搜索引擎看的
+author: Mr.Peng #作者
+email: pengrun520@gmail.com #电子邮箱
+language: zh-CN #语言
+
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+url: www.mrpeng.me
+root: /
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+
+# Directory #目录
+source_dir: source #源文件目录
+public_dir: public #生成网页文件目录
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+# Writing #写作
+new_post_name: :title.md # File name of new posts
+default_layout: post #默认模板
+titlecase: false # Transform title into titlecase
+external_link: true # Open external links in new tab
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: true
+  tab_replace:
+
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 10
+pagination_dir: page
+
+# Extensions
+## Plugins: http://hexo.io/plugins/
+## Themes: http://hexo.io/themes/
+theme: themes/spfk
+
+  
+# Deployment
+## Docs: http://hexo.io/docs/deployment.html
+deploy:
+  type: baidu_url_submitter
+  repository: git@github.com:pengrun/pengrun.github.com.git
+  branch: master
+
+# 百度
+baidu_url_submit:
+  count: 100 # 提交最新的一个链接
+  host: www.mrpeng.me # 在百度站长平台中注册的域名
+  token: HqFNHPA3bhZ5HE0X # 请注意这是您的秘钥， 所以请不要把博客源代码发布在公众仓库里!
+  path: baidu_urls.txt # 文本文档的地址， 新链接会保存在此文本文档里

@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[GuoLin's blog]]></title>
+  <subtitle><![CDATA[Developer ⇄ Production Manager. Live in Beijing]]></subtitle>
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://guolinn.com/"/>
+  <updated>2015-04-25T11:16:46.029Z</updated>
+  <id>http://guolinn.com/</id>
+  
+  <author>
+    <name><![CDATA[Guo Lin]]></name>
+    <email><![CDATA[guo.lin@outlook.com]]></email>
+  </author>
+  
+  <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[电视收视率的一点看法]]></title>
+    <link href="http://guolinn.com/2015/about-tv-rating/"/>
+    <id>http://guolinn.com/2015/about-tv-rating/</id>
+    <published>2015-04-25T01:05:00.000Z</published>
+    <updated>2015-04-25T11:15:26.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="什么是收视率">什么是收视率</h2>
+<ul>
+<li>有多少人看了电视节目就叫做收视率。例如收视率1%就意味着，全国10亿看电视的收视人群中有有1千万的人同时在看。</li>
+<li>衡量广告效果的最简单和粗暴的方式就是回答一个问题“有多少人看”。收视率就是回答“电视广告有多少人看”的指标。</li>
+<li>广告主花钱买电视台的广告位置并用收视率衡量自己花钱打广告的效果。<br>如果只有一个电视台那么他绝对不希望有收视率的存在，因为那样它可以随便要价。</li>
+<li>如果多个电视台竞争有限的广告资源，那么他叫要证明自己的广告位置好，所以电视台才同意收视率的存在。</li>
+</ul>
+<h2 id="目前收视率怎么计算">目前收视率怎么计算</h2>
+<ul>
+<li>收视率作为一个买卖双方用来结算的数据支持指标必须理论上无懈可击的公平，但操作上又无与伦比的灵活。</li>
+<li>美国双向机顶盒普及，收视率可以实时灵活的统计，非常方便。</li>
+<li>国内的收视率被央视索福瑞垄断，统计方法大约是国内有几万的测试样本，通过日记卡或测量仪收集用户数据并生成结果。统计方法就是绝对的统计学教科书，但操作起来可能有样本被污染的可能。（例如即使索福瑞做了大量的保密工作，但是也有被电视台买通样本的可能）</li>
+<li>国内还有一些新兴的机遇智能电视截屏识别台标的统计方法。以酷云eye为例官方称有1000万样本。但是样本的问题是：1.多集中于新买的智能电视样本空间不具有普遍意义。2. 即使是1000万样本统计精准度也没有质的提高。3. 相对于索福瑞样本空间更容易造假（原理类似于appstore刷榜）。但好处是可以更快捷的获取数据。</li>
+</ul>
+<h2 id="以后收视率如何发展">以后收视率如何发展</h2>
+<ul>
+<li>没有发展。随即技术的发展广告结算的方式和指标都在飞速的变化。基于收视率尤其是数据统计生成的收视率必然淘汰。</li>
+<li>但是会存在，因为要保持“理论上的无懈可击”和“操作上的无比灵活”。<br>另外随着电视媒体整体关注度的下降导致广告预算比例的下降导致收视率随着直播电视逐步消亡。</li>
+</ul>
+<p>利益相关： 酷云前员工</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="什么是收视率">什么是收视率</h2>
+<ul>
+<li>有多少人看了电视节目就叫做收视率。例如收视率1%就意味着，全国10亿看电视的收视人群中有有1千万的人同时在看。</li>
+<li>衡量广告效果的最简单和粗暴的方式就是回答一个问题“有多少人看”。收视率就是回]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[TV Video player UI sketch]]></title>
+    <link href="http://guolinn.com/2015/tv-video-player-sketch/"/>
+    <id>http://guolinn.com/2015/tv-video-player-sketch/</id>
+    <published>2015-03-02T01:05:00.000Z</published>
+    <updated>2015-03-02T06:15:49.000Z</updated>
+    <content type="html"><![CDATA[<p><img src="/asset/tvplayer.png" alt="tvplayer"></p>
+<p><a href="/asset/files/tv-player-sketch.sketch">free donwload</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><img src="/asset/tvplayer.png" alt="tvplayer"></p>
+<p><a href="/asset/files/tv-player-sketch.sketch">free donwload</a></p>
+]]>
+    </summary>
+    
+      <category term="sketch" scheme="http://guolinn.com/tags/sketch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Getting started with Fig and MEAN.JS]]></title>
+    <link href="http://guolinn.com/2015/fig-meanjs/"/>
+    <id>http://guolinn.com/2015/fig-meanjs/</id>
+    <published>2015-02-18T08:01:31.000Z</published>
+    <updated>2015-02-24T15:34:06.000Z</updated>
+    <content type="html"><![CDATA[<p><a href="http://docker.io" target="_blank" rel="external">Docker</a> is an open-source project to easily create lightweight, portable and self-sufficient containers from any application. </p>
+<p><a href="http://www.fig.sh/index.html" target="_blank" rel="external">Fig.sh</a> is a tool to use docker for makeing a fast, isolated development environments.</p>
+<p><a href="http://meanjs.org/" target="_blank" rel="external">MEAN.JS</a> MEAN means Mongodb, Express.js, Angular.js and Node.js. MEAN is a seed to setup a MEAN project quickly.</p>
+<p><em>\</em>more infomation your can see the offical site.*</p>
+<p>This tutorial will tell you how to setup dockerizing MEAN project use less 20 mins(dependent on your network). </p>
+<h3 id="Prerequisites">Prerequisites</h3>
+<p>You need have <code>Docker</code>, <code>fig</code>, If you are useing Mac your need <code>boot2docker</code>.</p>
+<p>Ensure all the tools were installed:</p>
+<figure class="highlight bash"><pre><div class="line">$ docker version</div><div class="line">$ fig --version</div></pre></figure>
+
+<h3 id="Get_the_MEAN-JS">Get the MEAN.JS</h3>
+<p>Download the <a href="http://yeoman.io/" target="_blank" rel="external">yo</a> and install MEAN.JS with yo.</p>
+<figure class="highlight bash"><pre><div class="line">$ npm install -g yo generator-meanjs grunt</div><div class="line">$ yo meanjs</div><div class="line">$ grunt</div></pre></figure>
+
+<h3 id="Run_the_docker_with_fig">Run the docker with fig</h3>
+<p>If you use Mac, you neet run the docker host first.</p>
+<figure class="highlight bash"><pre><div class="line">$ boot2docker up</div><div class="line">$ $(boot2dockr shellinit)</div><div class="line">$ boot2docker ip</div><div class="line">// will display the ip address of docker host</div><div class="line">// may be <span class="number">192.168</span>.<span class="number">53.103</span></div></pre></figure>
+
+<p>change the DB connect URL from <code>mongodb://localhost/mean-dev</code> to <code>mongodb://db/mean-dev</code>. config file is <code>config/env/development.js</code></p>
+<p>Run <code>$ fig up</code> and open <code>http://docker-host-ip:3000</code></p>
+<p>That’s it. very simple.</p>
+<h2 id="But_if_you_realy_develop_on_this_docker_env">But if you realy develop on this docker env</h2>
+<p>You mast don’t like to build the docker image every time.  So you can mount the local development folder <code>./</code> to docker container.<br>It is very easy too. Just config the <code>fig.yml</code> under the web section</p>
+<figure class="highlight"><pre><div class="line">volumes:</div><div class="line"> -<span class="ruby"> .<span class="symbol">:/data</span></span></div></pre></figure>
+
+
+
+<p>Then when you change any thing in you local code folder, the running doceker container will change immediately.</p>
+<h2 id="But_if_you_are_useing_Mac,_it_will_be_super_slowly-">But if you are useing Mac, it will be super slowly.</h2>
+<p>because, there is performance issue when VirtualBox shell a folder from mac to boot2docker. I finded out the key is <code>node_modules</code> folder. If I don’t mount the <code>node_modules</code> folder, the preformance is ok. So my solution is mount the other folder individual. </p>
+<p>the <code>fig.yml</code> will like:</p>
+<figure class="highlight"><pre><div class="line"><span class="title">volumes</span>:</div><div class="line"> - ./app:/<span class="typedef"><span class="keyword">data</span>/app</span></div><div class="line"> - ./config:/<span class="typedef"><span class="keyword">data</span>/config</span></div><div class="line"> - ./public:/<span class="typedef"><span class="keyword">data</span>/public</span></div><div class="line"> - ./.jshintrc:/<span class="typedef"><span class="keyword">data</span>/.jshintrc</span></div><div class="line"> - ./.csslintrc:/<span class="typedef"><span class="keyword">data</span>/.csslintrc</span></div><div class="line"> - ./package.json:/<span class="typedef"><span class="keyword">data</span>/package.json</span></div><div class="line"> - ./gruntfile.js:/<span class="typedef"><span class="keyword">data</span>/gruntfile.js</span></div><div class="line"> - ./server.js:/<span class="typedef"><span class="keyword">data</span>/server.js</span></div></pre></figure>
+
+<p>That is all. :)</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><a href="http://docker.io" target="_blank" rel="external">Docker</a> is an open-source project to easily create lightweight, portable and]]>
+    </summary>
+    
+      <category term="docker" scheme="http://guolinn.com/tags/docker/"/>
+    
+      <category term="nodejs" scheme="http://guolinn.com/tags/nodejs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Getting started with Fig and Express.js]]></title>
+    <link href="http://guolinn.com/2015/Getting-started-with-Fig-and-Express-js/"/>
+    <id>http://guolinn.com/2015/Getting-started-with-Fig-and-Express-js/</id>
+    <published>2015-02-17T08:01:31.000Z</published>
+    <updated>2015-02-24T04:38:24.000Z</updated>
+    <content type="html"><![CDATA[<p>Let’s use Fig to set up and run a Expressjs/MongoDB app. Before starting, you’ll need to have <strong>Fig</strong> installed.</p>
+<p>Let’s set up the <strong>four</strong> files that’ll get us started. </p>
+<p>First, our app is going to be running inside a Docker container which contains all of its dependencies. We can define what goes inside that Docker container using a file called <code>Dockerfile</code>. It’ll contain this to start with:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">FROM dockerfile/nodejs</div><div class="line"></div><div class="line">WORKDIR /data</div><div class="line"><span class="comment"># update to the latest</span></div><div class="line">RUN apt-get install gcc make build-essential</div><div class="line"></div><div class="line"><span class="comment"># Add this to your Dockerfile, after your deps, but before your app code.</span></div><div class="line"><span class="comment"># The purpose of copy to /tmp folder firest is let docker cache the build result. </span></div><div class="line"><span class="comment"># The second time all the step will be cached.</span></div><div class="line"></div><div class="line">ADD package.json /tmp/package.json</div><div class="line">RUN <span class="built_in">cd</span> /tmp && npm install</div><div class="line">RUN cp <span class="operator">-a</span> /tmp/node_modules /data/</div></pre></td></tr></table></figure>
+
+<p>That’ll install our application inside an image with Nodejs installed alongside all of our Nodejs dependencies. For more information on how to write <code>Dockerfiles</code>, see the <a href="https://docs.docker.com/userguide/dockerimages/#building-an-image-from-a-dockerfile" target="_blank" rel="external">Docker user guide</a> and the <a href="http://docs.docker.com/reference/builder/" target="_blank" rel="external">Dockerfile reference</a>.</p>
+<p>Second, we define the dependencies in a file called <code>package.json</code>:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">{</div><div class="line">  "<span class="attribute">name</span>": <span class="value"><span class="string">"fig-nodejs"</span></span>,</div><div class="line">  "<span class="attribute">description</span>": <span class="value"><span class="string">"Getting started with Fig and Nodejs"</span></span>,</div><div class="line">  "<span class="attribute">version</span>": <span class="value"><span class="string">"0.0.1"</span></span>,</div><div class="line">  "<span class="attribute">author</span>": <span class="value"><span class="string">"Guolin"</span></span>,</div><div class="line">  "<span class="attribute">engines</span>": <span class="value">{</span></div><div class="line">    "<span class="attribute">node</span>": <span class="value"><span class="string">"0.10.x"</span></span>,</div><div class="line">    "<span class="attribute">npm</span>": <span class="value"><span class="string">"1.4.x"</span></span></div><div class="line">  },</div><div class="line">  "<span class="attribute">dependencies</span>": <span class="value">{</span></div><div class="line">    "<span class="attribute">express</span>": <span class="value"><span class="string">"~4.10.1"</span></span>,</div><div class="line">    "<span class="attribute">mongoose</span>": <span class="value"><span class="string">"~3.8.8"</span></span></div><div class="line">  }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>3rd, this is all tied together with a file called <code>fig.yml</code>. It describes the services that our app comprises of (a web server and database), what Docker images they use, how they link together, what volumes will be mounted inside the containers and what ports they expose.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">db:</div><div class="line">  image: dockerfile/mongodb</div><div class="line">  command: mongod --smallfiles  <span class="comment"># for fix this image's bug</span></div><div class="line"></div><div class="line">web:</div><div class="line">  build: .</div><div class="line">  command: node app.js</div><div class="line">  volumes:</div><div class="line">    - ./app.js:/data/app.js</div><div class="line">  ports:</div><div class="line">    - <span class="string">"3000:3000"</span></div><div class="line">  links:</div><div class="line">    - db</div><div class="line">  environment: </div><div class="line">   MONGO_URL: mongodb://db</div></pre></td></tr></table></figure>
+
+<p>See the <a href="http://www.fig.sh/yml.html" target="_blank" rel="external">fig.yml reference</a> for more information on how it works.</p>
+<p>Finally, we need a file called ‘app.js’ to start the expressjs app and connect the mongodb.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>),</div><div class="line">    mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> app = express(),</div><div class="line">  connected = <span class="literal">true</span>;</div><div class="line"></div><div class="line"><span class="comment">// Test the mongodb connect is ok</span></div><div class="line">mongoose.connect(process.env.MONGO_URL , <span class="function"><span class="keyword">function</span><span class="params">(err)</span> </span>{</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (err) {</div><div class="line">    connected = <span class="literal">false</span>;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Could not connect to MongoDB!'</span>);</div><div class="line">    <span class="built_in">console</span>.log(err);</div><div class="line">  }</div><div class="line">  </div><div class="line">});</div><div class="line"></div><div class="line"><span class="comment">// Test the web server</span></div><div class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(req, res)</span> </span>{</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (connected) {</div><div class="line">    res.send(<span class="string">'MongoDB has been connected.'</span>);</div><div class="line">  } <span class="keyword">else</span> {</div><div class="line">    res.send(<span class="string">'Could not connect to MongoDB!'</span>);</div><div class="line">  }</div><div class="line">  </div><div class="line">});</div><div class="line"></div><div class="line"><span class="keyword">var</span> server = app.listen(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line"></div><div class="line">    <span class="keyword">var</span> host = server.address().address,</div><div class="line">        port = server.address().port;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Example app listening at http://%s:%s'</span>, host, port);</div><div class="line"></div><div class="line">});</div></pre></td></tr></table></figure>
+
+<p>OK, everything has been ready.</p>
+<p>Then, run <code>fig up</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Recreating myapp_db_1...</div><div class="line">Recreating myapp_web_1...</div><div class="line">Attaching to myapp_db_1, myapp_web_1</div><div class="line">db_1  | <span class="number">2015</span>-<span class="number">02</span>-<span class="number">17</span>T07:<span class="number">16</span>:<span class="number">16.363</span>+<span class="number">0000</span> [initandlisten] waiting <span class="keyword">for</span> connections on port <span class="number">27017</span></div><div class="line">...</div><div class="line">web_1 | Example app listening at http://<span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">3000</span></div></pre></td></tr></table></figure>
+
+<p>In the background:</p>
+<ol>
+<li>Fig will help you to build a new image with your <code>Dockerfile</code>. </li>
+<li>Fig create two container (web and db).</li>
+<li>Run a command <code>node app.js</code> (configed in fig.yml) on the web container.</li>
+</ol>
+<p>And now your Expressjs app should be running at port 3000 on your docker daemon (if you’re using boot2docker, <code>boot2docker ip</code> will tell you its address).</p>
+<p>DONE</p>
+<ul>
+<li>all the code will be donwload on <a href="https://github.com/guolin/fig-expressjs-examples*" target="_blank" rel="external">https://github.com/guolin/fig-expressjs-examples*</a></li>
+</ul>
+<p><em>注：第一次写英文博客 :)</em></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Let’s use Fig to set up and run a Expressjs/MongoDB app. Before starting, you’ll need to have <strong>Fig</strong> installed.</p>
+<p>Let’]]>
+    </summary>
+    
+      <category term="docker" scheme="http://guolinn.com/tags/docker/"/>
+    
+      <category term="nodejs" scheme="http://guolinn.com/tags/nodejs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Docker搭建Shadowsocks]]></title>
+    <link href="http://guolinn.com/2015/docker-shadowsocks/"/>
+    <id>http://guolinn.com/2015/docker-shadowsocks/</id>
+    <published>2015-02-17T05:35:25.000Z</published>
+    <updated>2015-02-24T06:15:32.000Z</updated>
+    <content type="html"><![CDATA[<p>搭梯子的方法很多，但随着墙的升级很多都失效了。我用shadowsocks翻＊大约2年了一直很稳定.</p>
+<p>shadowsockes部署本身很简单，不过最近折腾Docker就做了个Docker的image，事情貌似更简单了。</p>
+<h2 id="搭建服务端">搭建服务端</h2>
+<h3 id="启动">启动</h3>
+<figure class="highlight"><pre><div class="line">docker pull guolin/shadowsock</div><div class="line">docker <span class="command">run</span> -d -p <span class="number">8838</span>:<span class="number">8838</span> <span class="comment">--name ss guolin/shadowsocks</span></div></pre></figure>
+
+<h3 id="关闭">关闭</h3>
+<p><code>docker rm -f ss</code></p>
+<h3 id="配置信息可以通过evn传入：">配置信息可以通过evn传入：</h3>
+<ul>
+<li>server address: $SS_SERVER_ADDR  默认 0.0.0.0</li>
+<li>server port: $SS_SERVER_PORT 默认 8388</li>
+<li>password: $SS_PASSWORD 默认 password</li>
+<li>encryption method: $SS_METHOD 默认 aes-256-cfb <a href="https://github.com/shadowsocks/shadowsocks/wiki/Encryption" target="_blank" rel="external">others</a></li>
+<li>timeout: $SS_TIMEOUT 默认 300</li>
+</ul>
+<p>例如，端口为9453，密码为guolin则运行</p>
+<figure class="highlight"><pre><div class="line">docker run <span class="operator">-d</span> -p <span class="number">9453</span>:<span class="number">8838</span> <span class="operator">-e</span> SS_PASSWORD=guolin --name ssguolin/shadowsocks</div></pre></figure>
+
+<p><em>小提示：</em><br>默认的8838端口可能会被拦截，换成其他端口试一下就OK了。</p>
+<h3 id="通过tutum-co搭建">通过tutum.co搭建</h3>
+<p><a href="http://tutum.co" target="_blank" rel="external">tutum.co</a>管理docker非常方便，尤其是直接连接DigitalOcean之后。</p>
+<p>我简单描述一下步骤。</p>
+<ol>
+<li>新建一个service。</li>
+<li>选择Public images，搜索guolin/shadowsocks</li>
+<li>设置端口映射：Container port为8388，node port为你希望的端口。</li>
+<li>Environment variables中设置环境变量，一般只设置密码就可以。</li>
+<li>save &amp; deploy</li>
+<li>状态为Running后，可以在Endpoints中查看一个三级域名作为SS的地址。</li>
+</ol>
+<h2 id="配置客户端">配置客户端</h2>
+<p>每个人用的客户端的设置方法可能不同，但是参数是一样的。</p>
+<ul>
+<li>服务器地址：Endpoints中的三级域名，或者直接时你服务器的IP</li>
+<li>服务器端口：你设置的映射端口，默认是8838，最后换一下</li>
+<li>服务器密码：你设置的密码，默认是password，务必更换</li>
+<li>加密方法：默认为aes-256-cfb。</li>
+<li>本地端口：这个是本地socket的端口，例如8123。</li>
+</ul>
+<h3 id="给浏览器配置代理">给浏览器配置代理</h3>
+<ul>
+<li>chrome: 安装autoproxy插件，代理模式选择socket5，地址172.0.0.1, 端口就是刚刚设置的本地端口。<em>（建议，因为很容易做规则匹配国内网站不走代理）</em></li>
+<li>mac全局代理: 网络偏好 － wifi － 高级 － 代理 － socket5代理 参数同上。</li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>搭梯子的方法很多，但随着墙的升级很多都失效了。我用shadowsocks翻＊大约2年了一直很稳定.</p>
+<p>shadowsockes部署本身很简单，不过最近折腾Docker就做了个Docker的image，事情貌似更简单了。</p>
+<h2 id="搭建服务端">搭建]]>
+    </summary>
+    
+      <category term="docker" scheme="http://guolinn.com/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[基于互联网的多屏互动的思路]]></title>
+    <link href="http://guolinn.com/2014/airplay/"/>
+    <id>http://guolinn.com/2014/airplay/</id>
+    <published>2014-09-25T13:06:42.000Z</published>
+    <updated>2015-02-25T14:09:17.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="问题">问题</h2>
+<p>目前大多数投屏的技术方案（包括airplay，DLNA，chromecast，miracast等）有一个共同的特点就是<strong>基于局域网的设备发现</strong>。这个特点明显的好处就是完全不依赖于internet，不需要连接外网就能正常工作。</p>
+<p>但随着时代的发展，1.越来越多的设备可以上网（参见物联网的定义 IoT:Internet of Thing），2.绝大多数的视频都来自网络。基于以上两点 “不依赖internet” 带来的好处并不明显。但带来的缺点去越来越突出:</p>
+<ul>
+<li>设备配对操作复杂：airplay、DLNA、chromecast需要在同一局域网内并且用专门的硬件和客户端软件才能操作成功。miracast更需要连接wifi热点。</li>
+<li>私有协议互不兼容：airplay只能用于apple生态系统，chromecast需要注册成为google的开发者，开发和调试程序都需要通过google。</li>
+<li>可扩展性差：airplay的字幕一直不能自定义，播放进度条永远挡住字幕，这些都没发由开发者自己定义。</li>
+<li>交互逻辑陈旧：例如airplay依然是扩展屏幕的概念，部分ipad app airplay到itv时，ipad的app竟然必须保持开启且常亮。难道不能同时用ipad干点儿别的吗？</li>
+<li>稳定性和兼容性差：airplay是所有方案中最稳定的，但也经常出错。</li>
+</ul>
+<h2 id="方案">方案</h2>
+<p><strong>基于互联网的投屏方案</strong></p>
+<p><img src="/asset/airplay.png" alt="基于互联网的投屏方案"></p>
+<p>这个方案的特点是：</p>
+<ol>
+<li>多了一个云端的server，不再基于设备发现。不再需要设备配对的过程，也不强制在同一个局域网内。</li>
+<li>采用PUB/SUB的模型，解除部分耦合、简单稳定且易于理解。</li>
+</ol>
+<h3 id="备注">备注</h3>
+<ol>
+<li>chromecast也是有中央服务器的，但是它依然机遇设备发现。这就导致了：1. 将chromecast插在酒店电视上，但酒店的局域网时不互通的导致chromecast没法用。2. youtube用chromecast播放必须安装一个chrome插件。……</li>
+<li>airplay和其他的方案在播放远程视频时也是传输的URL。但airplay还需要在客户端显示视频的进度条和下载速度等信息，这可能导致很多同步的错误。</li>
+<li>airply和chromecast的应用场景比这个方案的应用场景要宏大的多（mirror功能）。本方案只想解决最基础和常用的功能。（mirror功能的延迟和画质真的是惨不忍睹呀）</li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="问题">问题</h2>
+<p>目前大多数投屏的技术方案（包括airplay，DLNA，chromecast，miracast等）有一个共同的特点就是<strong>基于局域网的设备发现</strong>。这个特点明显的好处就是完全不依赖于internet，不需要连]]>
+    </summary>
+    
+      <category term="multi-screen" scheme="http://guolinn.com/tags/multi-screen/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[JavaScript 数据结构 与 lodash]]></title>
+    <link href="http://guolinn.com/2014/js-lodash-datastructure/"/>
+    <id>http://guolinn.com/2014/js-lodash-datastructure/</id>
+    <published>2014-08-09T04:00:00.000Z</published>
+    <updated>2015-02-24T06:15:11.000Z</updated>
+    <content type="html"><![CDATA[<p>最近想用JavaScript补习一下数据结构的基础知识，但尝试开始之后有发现了<strong>几个问题</strong>：</p>
+<ol>
+<li><p>JS是一种弱类型的高级语言，只有6个基本类型（字符串、数字、布尔、null、Undifined和Object）。若要实现数组（!最基础的数据结构），列表和链表等必需基于Object的，所以就没有像C语言一样数组必须定长，必须连续的限制。所以大学时学的C语言数据结构更多的是一种编程思想而没多大实际意义。</p>
+</li>
+<li><p>JS解释器对很多基础的算法做了优化，所以在一些基础的数据结构算法上没必要太注意。而且对计算性能要求很高的计算一般也不会选择JS。</p>
+</li>
+<li><p>JS内置的Array类不仅包含了数组的操作，而且也包含了很多队列、堆栈和集合的操作。</p>
+</li>
+<li><p>开源的underscore.js和lodash也包含了很多工具方法来处理一些基础的数据结构问题。</p>
+</li>
+</ol>
+<p>So, 我编写列一个<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank" rel="external">Array.prototype</a>和<a href="https://lodash.com/docs" target="_blank" rel="external">lodash</a>关于数据结构与算法的列表，按照数据结构的方式进行索引。要了解详细内容当然还是查看文档和源码更准确。</p>
+<h2 id="数组操作">数组操作</h2>
+<ul>
+<li>length: Array的长度（唯一的一个属性）</li>
+<li>indexOf lastIndexOf: 找到某个值的索引,</li>
+<li>join: 生成字符串</li>
+<li>_.includes 是否包含某个元素</li>
+<li>_.at: 返回一个包含索引的新数组。</li>
+<li>_.fill 替换元素</li>
+<li>_.sample: 随机取几个值</li>
+</ul>
+<h2 id="排序">排序</h2>
+<ul>
+<li>reverse：倒转</li>
+<li>sort: 默认按照unicode进行排序。不生成新数组</li>
+<li>_.sortBy: 生成一个新数组</li>
+<li>_.shuffle: 给数组打乱顺序</li>
+</ul>
+<h2 id="截断、连接">截断、连接</h2>
+<ul>
+<li>splice: 添加删除元素。神器</li>
+<li>concat: 连接多个数组</li>
+<li>slice _slice: 截取一部分数组</li>
+<li>_.compact: 返回所有 = =  true 的元素</li>
+<li>_.chunk: 按照给定长长度给数组分组，返回一个二维数组</li>
+<li><em>.drop </em>.dropWhile <em>.dropRight </em>.dropRightWhile:从第几个开始截取。</li>
+<li>_.remove: 删除所有符合的元素（操作原数组，返回被剪掉的数组）</li>
+<li>_.without 去掉所有值：生成新数组</li>
+<li>_.partition: 拆分两个数组，一组是符合条件的，一组是不符合条件的</li>
+</ul>
+<h2 id="迭代">迭代</h2>
+<ul>
+<li>reduce：累计执行</li>
+<li>forEach forEachRight</li>
+<li>every: 全部 == true</li>
+<li>some: 至少有一个 == true</li>
+<li>filter：new  _filter _reject</li>
+<li>map：new</li>
+</ul>
+<h2 id="列表：">列表：</h2>
+<ul>
+<li>_initial: 所有元素除了最后一个</li>
+<li>_rest: 所有的元素除了第一个</li>
+<li>_sortedIndex：二分法查找插入的位置 _sortedLastIndex</li>
+<li>_zip _unzip _zipObject 矩阵</li>
+<li>_groupBy: 按某种条件进行分组</li>
+<li>_countBy: 符合某种条件的个数</li>
+<li>_max _min ： 返回最大值最小值</li>
+</ul>
+<h2 id="集合：">集合：</h2>
+<ul>
+<li>_difference: 返回多个集合的差别</li>
+<li>_intersection: 合集</li>
+<li>_union: 并集</li>
+<li>_uniq: 但个集合去重</li>
+</ul>
+<h2 id="队列&amp;堆栈">队列&amp;堆栈</h2>
+<ul>
+<li>push: 从最后插入一个元素</li>
+<li>pop：返回最后一个元素，并删除</li>
+<li>shift：返回第一个元素，并删除</li>
+<li>_first _last: 返回第一个或最后一个的值，不删除</li>
+<li>_pull: 取出所有的值 _pullAt 取出指定位置的值</li>
+<li>_take: 从头开始取 n _takeRight: 从尾取 _takeWhile _takeRightWhile</li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>最近想用JavaScript补习一下数据结构的基础知识，但尝试开始之后有发现了<strong>几个问题</strong>：</p>
+<ol>
+<li><p>JS是一种弱类型的高级语言，只有6个基本类型（字符串、数字、布尔、null、Undifined和Object）。若要实]]>
+    </summary>
+    
+      <category term="JavaScript" scheme="http://guolinn.com/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[多屏应用的设计特征与实例]]></title>
+    <link href="http://guolinn.com/2014/mutli-screen/"/>
+    <id>http://guolinn.com/2014/mutli-screen/</id>
+    <published>2014-07-21T01:05:00.000Z</published>
+    <updated>2015-02-25T14:08:44.000Z</updated>
+    <content type="html"><![CDATA[<h4 id="一致性特征">一致性特征</h4>
+<p>在不同的设备上呈现不同的样式，但是大体的功能类似。例如，</p>
+<ul>
+<li>google.com youku.com等</li>
+<li>微信、淘宝 在iOS和android平台上的app。</li>
+<li>hulu 和 netfix在pc、mobile、Xbox、PS、roku上的不同方案。eg. <a href="http://www.hulu.com/plus/devices" target="_blank" rel="external">http://www.hulu.com/plus/devices</a></li>
+</ul>
+<h4 id="连续性特征">连续性特征</h4>
+<p>一个工作需要在不同设备上连续完成，切换设备时要保持切换时的状态。例如，</p>
+<ul>
+<li>用手机听音乐然后切换到汽车上的蓝牙音响，播放状态是连续的。</li>
+<li>在手机优酷上播放的记录，打开PC端一样可以接上上次的播放时刻继续播放。</li>
+<li>iOS 的Handoff功能，在电脑上编辑的文档在iPhone和iPad上可以继续编辑。</li>
+<li>Pocket(Read it later): 在各种设备上都可以查看自己的阅读清单。</li>
+</ul>
+<h4 id="补充性特征">补充性特征</h4>
+<p>指的是在两个设备的功能互补，分为两种情况：</p>
+<p>第一种 mast to have</p>
+<ul>
+<li><p><a href="https://itunes.apple.com/us/app/real-racing-2/id386568787?mt=8" target="_blank" rel="external">real race 2</a>:  iPad或airpaly作为比赛转播大屏幕，其他设备作为车手参加比赛。<img src="/asset/rr2partyplay.jpg" alt="">还可以airpaly的大屏幕作为第一视角比赛，iPhone作为遥控器＋路线地图，玩起来就想用XBox的手柄差不多。<em>（类似的游戏还有<a href="https://itunes.apple.com/us/app/padracer/id369603739?mt=8" target="_blank" rel="external">pad racer</a>, <a href="https://itunes.apple.com/cn/app/kuang-ye-biao-che8-ji-su-ling/id610391947?mt=8" target="_blank" rel="external">狂野飙车</a>)</em></p>
+</li>
+<li><p><a href="https://chrome.com/supersyncsports/" target="_blank" rel="external">supersyncsports</a>: 一款非常有趣儿的小游戏。用PC作为服务已用手机控制小人赛跑和游泳。强烈推荐。</p>
+</li>
+<li><p><a href="http://sketchparty.tv/" target="_blank" rel="external">http://sketchparty.tv/</a>: 一款家庭聚会猜图片游戏。</p>
+</li>
+</ul>
+<p>第二种 nice to have</p>
+<ul>
+<li>Shazam 或者 微信摇一摇也有类似的听音识别功能。可以让用户在看电视剧的时候通过声音识别当前的电视剧并且给出相关信息。例如演员表，剧情介绍、相关投票等。</li>
+</ul>
+<p>More examples you can see on <a href="https://www.pinterest.com/guolin/multi-screen-experience/" target="_blank" rel="external">https://www.pinterest.com/guolin/multi-screen-experience/</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h4 id="一致性特征">一致性特征</h4>
+<p>在不同的设备上呈现不同的样式，但是大体的功能类似。例如，</p>
+<ul>
+<li>google.com youku.com等</li>
+<li>微信、淘宝 在iOS和android平台上的app。</li>
+<li>hu]]>
+    </summary>
+    
+      <category term="multi-screen" scheme="http://guolinn.com/tags/multi-screen/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[NIKE+ fuelband]]></title>
+    <link href="http://guolinn.com/2014/NIKE-fuelband/"/>
+    <id>http://guolinn.com/2014/NIKE-fuelband/</id>
+    <published>2014-06-14T00:29:28.000Z</published>
+    <updated>2015-02-24T09:32:27.000Z</updated>
+    <content type="html"><![CDATA[<p><img src="/asset/fuelband.png" alt="fueland"></p>
+<p>入手NIKE＋ fuelband两周有余，说一下它的多屏体验。</p>
+<p>它其实就是功能很简单的一个计步器，但当它和手机与相连就产生了很有意思的变化。</p>
+<h4 id="设备端：">设备端：</h4>
+<p>手环有一个显示屏，能显示当天的fuel值、时间、步数和卡路里。虽然只是有100多个灯的点阵led显示屏，但配合动画和亮度的变化效果还是非常赞的。</p>
+<p>设备上只有一个按钮，按一下可以点亮屏幕，再按一下可以切换显示内容。</p>
+<h4 id="手机端：">手机端：</h4>
+<ul>
+<li>蓝牙配对方式很简单和一般的蓝牙耳机没区别。</li>
+<li>配对成功后只要长按一下就能和手机连接上，过一段时间自动断开。（据说升级蓝牙4.0以后就不用这样了可以一直连接着）</li>
+<li>ios的app很漂亮，app的功能除了记录每天的运动量以外还有一些激励机制和社交功能。</li>
+</ul>
+<h4 id="update:">update:</h4>
+<ul>
+<li>已经有三个led灯不亮了。</li>
+<li>外面的涂层有点儿开始变亮，变黏。</li>
+<li>渐渐的很少待了。</li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><img src="/asset/fuelband.png" alt="fueland"></p>
+<p>入手NIKE＋ fuelband两周有余，说一下它的多屏体验。</p>
+<p>它其实就是功能很简单的一个计步器，但当它和手机与相连就产生了很有意思的变化。</p>
+<h]]>
+    </summary>
+    
+      <category term="internet of things" scheme="http://guolinn.com/tags/internet-of-things/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[对于chromecast的看法]]></title>
+    <link href="http://guolinn.com/2014/about-chromecast/"/>
+    <id>http://guolinn.com/2014/about-chromecast/</id>
+    <published>2014-06-13T16:05:35.000Z</published>
+    <updated>2015-02-25T14:08:45.000Z</updated>
+    <content type="html"><![CDATA[<p>前段时间搞了个chromecast，说说想法：</p>
+<h3 id="投屏不是什么新鲜的概念。">投屏不是什么新鲜的概念。</h3>
+<p>很早苹果就有了airplay，airplay发展到今天也没有太大的变化，唯一一次升级还是因为客户端硬件（iOS设备和OSx设备）实现了实时编码能力所以提供了airplay mirror功能。另外还有个DLNA，它是由几家大公司一起开发的，功能和airplay差不多，不过由于是开放协议所以相对airplay要复杂很多，目前没有稳定的硬件和软件实现。近几年又出现了一个叫mirrorcast的协议，功能相当于airplay的mirror的功能。 </p>
+<h3 id="chromecast_的一些创新">chromecast 的一些创新</h3>
+<p>这才是重点，airplay只是流媒体（音频、视频、图片）的跨屏幕传输，而chromecast传输的对象是web。因为web支持流媒体（音频、视频、图片）所以airplay支持的所有功能chromecast也都支持。但由于传输的对象是web，所以未来会有很大的想象的空间，例如：<br>用手机投放一个Web Game。<br>播放视频中加入贴片广告。<br>基于web的简单应用，例如手机ppt投放到大屏幕并实现更多的控制，大屏幕现实航班信息等<br>……</p>
+<h3 id="chromecast目前的情况">chromecast目前的情况</h3>
+<ul>
+<li>内容少：几乎没有国内的内容，国外的内容也非常少，和amazon fire tv、apple tv、roku 没法比。<strong>但支持youtube</strong>。</li>
+<li>硬件差：硬件便宜但是性能很差，前面提到的web app在目前的硬件上是不可能实现的。稳定性好于山寨盒子但不如apple tv。</li>
+<li>开发者：我看了开发文档实现了个hello world。整个体验不是很好，例如：开发者必须通过google的审核会费貌似5美刀；每个应用的程序必须在互联网上而不是发送端；只能播放互联网上的东西、局域网和本地内容有限制；由于硬件性能限制除了播视频几乎干不了别的；（我没有太深入的研究，所以这部分说的可能不准确）</li>
+<li>行业标准：其实airplay已经是事实标准，参考apple tv的销量、ios设备的占有率，以及几乎所有的山寨盒子都自称兼容airplay的现象。（所有的ios设备都支持airplay）</li>
+</ul>
+<p>总体上说，硬件性能再好点儿，内容再多点儿，平台再开放点儿，一段时间以后可能会有发展，但是目前没有使用价值。销量不错可能只是因为便宜。</p>
+<p><a href="http://www.zhihu.com/question/21381210/answer/26779501?group_id=330358231" target="_blank" rel="external">http://www.zhihu.com/question/21381210/answer/26779501?group_id=330358231</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>前段时间搞了个chromecast，说说想法：</p>
+<h3 id="投屏不是什么新鲜的概念。">投屏不是什么新鲜的概念。</h3>
+<p>很早苹果就有了airplay，airplay发展到今天也没有太大的变化，唯一一次升级还是因为客户端硬件（iOS设备和OSx设备）实现]]>
+    </summary>
+    
+      <category term="multi-screen" scheme="http://guolinn.com/tags/multi-screen/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[FireTV-UI-Sketch]]></title>
+    <link href="http://guolinn.com/2014/firetv-ui-sketch/"/>
+    <id>http://guolinn.com/2014/firetv-ui-sketch/</id>
+    <published>2014-06-04T00:53:28.000Z</published>
+    <updated>2015-03-04T00:55:03.000Z</updated>
+    <content type="html"><![CDATA[<p><img src="/asset/firetv-ui-sketch.png" alt="tvplayer"></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><img src="/asset/firetv-ui-sketch.png" alt="tvplayer"></p>
+]]>
+    </summary>
+    
+      <category term="sketch" scheme="http://guolinn.com/tags/sketch/"/>
+    
+  </entry>
+  
+</feed>
