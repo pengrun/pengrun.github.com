@@ -20,14 +20,14 @@ www.mrpeng.me/2015/06/30/Mr.Peng解决XCode6 iOS7控制器View整体上移问题
 www.mrpeng.me/2015/06/27/Mr.Peng在Objective-C使用指纹解锁(附Demo)/
 www.mrpeng.me/2015/06/26/Mr.Peng学习Swift 2.0  Session 5 枚举和结构体/
 www.mrpeng.me/2015/06/25/Mr.Peng在Hexo中为文章添加背景音乐/
-www.mrpeng.me/2015/06/25/Swift-2-0-Session-4-学习/
 www.mrpeng.me/2015/06/25/Mr.Peng学习Swift 2.0 Session 4/
-www.mrpeng.me/2015/06/24/Mr.Peng学习Swift 2.0 Session 3/
+www.mrpeng.me/2015/06/25/Swift-2-0-Session-4-学习/
 www.mrpeng.me/2015/06/24/Swift-2-0-Session-3-学习/
+www.mrpeng.me/2015/06/24/Mr.Peng学习Swift 2.0 Session 3/
 www.mrpeng.me/2015/06/23/Swift-2-0-Session-2-学习/
 www.mrpeng.me/2015/06/23/Mr.Peng学习Swift 2.0 Session 2/
-www.mrpeng.me/2015/06/23/Swift-2-0-Session-1-学习/
 www.mrpeng.me/2015/06/23/Mr.Peng学习Swift 2.0 Session 1/
+www.mrpeng.me/2015/06/23/Swift-2-0-Session-1-学习/
 www.mrpeng.me/2015/06/19/Mr.Peng在Mac上VMware-Fusion7-1-0安装Windows-10/
 www.mrpeng.me/2015/06/18/Mr.Peng暂停搭建Hexo/
 www.mrpeng.me/2015/06/18/Mr.Peng安装Hexo过程/
