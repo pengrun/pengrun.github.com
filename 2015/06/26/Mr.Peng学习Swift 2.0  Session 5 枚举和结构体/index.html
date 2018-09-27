@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Mr.Peng学习Swift 2.0 Session 5  枚举和结构体 | Mr.Peng&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="##申明我不是一个专业翻译人员，肯定会有翻译理解有误的地方，很多不确定的都把原文贴出来了，附上了自己的理解，所以以下内容有哪里翻译有误请大家指出。 翻译来源：iBook中搜索 Swift 下载 The Swift Programming Language (Swift 2 Prerelease)原文地址：http://www.mrpeng.me/2015/06/26/Swift-2-0-Sessi">
+<meta name="keywords" content="Swift,翻译">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mr.Peng学习Swift 2.0 Session 5  枚举和结构体">
+<meta property="og:url" content="www.mrpeng.me/2015/06/26/Mr.Peng学习Swift 2.0  Session 5 枚举和结构体/index.html">
+<meta property="og:site_name" content="Mr.Peng&#39;s Blog">
+<meta property="og:description" content="##申明我不是一个专业翻译人员，肯定会有翻译理解有误的地方，很多不确定的都把原文贴出来了，附上了自己的理解，所以以下内容有哪里翻译有误请大家指出。 翻译来源：iBook中搜索 Swift 下载 The Swift Programming Language (Swift 2 Prerelease)原文地址：http://www.mrpeng.me/2015/06/26/Swift-2-0-Sessi">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-25T17:38:11.516Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mr.Peng学习Swift 2.0 Session 5  枚举和结构体">
+<meta name="twitter:description" content="##申明我不是一个专业翻译人员，肯定会有翻译理解有误的地方，很多不确定的都把原文贴出来了，附上了自己的理解，所以以下内容有哪里翻译有误请大家指出。 翻译来源：iBook中搜索 Swift 下载 The Swift Programming Language (Swift 2 Prerelease)原文地址：http://www.mrpeng.me/2015/06/26/Swift-2-0-Sessi">
+  
+    <link rel="alternative" href="/atom.xml" title="Mr.Peng&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//img/favicon.jpg">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="//img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Mr.Peng</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">入猿未深，还待修行</p>
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives">All</a></li>
+                        
+                            <li><a href="/categories/WEB">WEB</a></li>
+                        
+                            <li><a href="/categories/MOBILE">MOBILE</a></li>
+                        
+                            <li><a href="/categories/PC">PC</a></li>
+                        
+                            <li><a href="/categories/转载">转载</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="/pengrun_520@gmail.com" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/pengrun" title="github">github</a>
+                            
+                                <a class="fl weibo" target="_blank" href="http://weibo.com/51200705" title="weibo">weibo</a>
+                            
+                                <a class="fl rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/AirDrop/" style="font-size: 10px;">AirDrop</a> <a href="/tags/Auto-Layout/" style="font-size: 10px;">Auto Layout</a> <a href="/tags/Bundle-identifier/" style="font-size: 10px;">Bundle identifier</a> <a href="/tags/Button/" style="font-size: 10px;">Button</a> <a href="/tags/Demo/" style="font-size: 11.43px;">Demo</a> <a href="/tags/Hexo/" style="font-size: 12.86px;">Hexo</a> <a href="/tags/KVO、KVC/" style="font-size: 10px;">KVO、KVC</a> <a href="/tags/MD313/" style="font-size: 10px;">MD313</a> <a href="/tags/Mac/" style="font-size: 15.71px;">Mac</a> <a href="/tags/Objective-C/" style="font-size: 17.14px;">Objective-C</a> <a href="/tags/Original/" style="font-size: 10px;">Original</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/R-Swfit/" style="font-size: 10px;">R.Swfit</a> <a href="/tags/Storyboard/" style="font-size: 10px;">Storyboard</a> <a href="/tags/Swift/" style="font-size: 20px;">Swift</a> <a href="/tags/TouchID/" style="font-size: 10px;">TouchID</a> <a href="/tags/XCode-8/" style="font-size: 14.29px;">XCode 8</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/Xcode6/" style="font-size: 10px;">Xcode6</a> <a href="/tags/Zend-Studio-13-5-1/" style="font-size: 10px;">Zend Studio 13.5.1</a> <a href="/tags/appstore/" style="font-size: 10px;">appstore</a> <a href="/tags/aria2/" style="font-size: 10px;">aria2</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/iOS-10/" style="font-size: 14.29px;">iOS 10</a> <a href="/tags/iOS12/" style="font-size: 10px;">iOS12</a> <a href="/tags/iOS9/" style="font-size: 11.43px;">iOS9</a> <a href="/tags/swift/" style="font-size: 10px;">swift</a> <a href="/tags/三方库/" style="font-size: 10px;">三方库</a> <a href="/tags/企业级账号/" style="font-size: 11.43px;">企业级账号</a> <a href="/tags/修改项目名/" style="font-size: 10px;">修改项目名</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/折腾/" style="font-size: 14.29px;">折腾</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/点击延迟/" style="font-size: 10px;">点击延迟</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/翻译/" style="font-size: 18.57px;">翻译</a> <a href="/tags/问题/" style="font-size: 10px;">问题</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://pengrun.github.io/">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">13年重庆理工大学毕业，2年iOS开发经验，目前南漂来深圳，从事车联网相关工作。16年5月离深回渝和之前的同事一起创业，2018年8月离开创业团队，目前在一家做民航系统的公司继续担任iOS开发。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Mr.Peng</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="//img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Mr.Peng</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">入猿未深，还待修行</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives">All</a></li>
+                
+                    <li><a href="/categories/WEB">WEB</a></li>
+                
+                    <li><a href="/categories/MOBILE">MOBILE</a></li>
+                
+                    <li><a href="/categories/PC">PC</a></li>
+                
+                    <li><a href="/categories/转载">转载</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="/pengrun_520@gmail.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/pengrun" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="http://weibo.com/51200705" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Mr.Peng学习Swift 2.0  Session 5 枚举和结构体" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/26/Mr.Peng学习Swift 2.0  Session 5 枚举和结构体/" class="article-date">
+      <time datetime="2015-06-26T06:38:00.000Z" itemprop="datePublished">2015-06-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Mr.Peng学习Swift 2.0 Session 5  枚举和结构体
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/MOBILE/">MOBILE</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>##申明<br>我<strong>不是</strong>一个<strong>专业翻译人员</strong>，肯定会有<strong>翻译理解有误</strong>的地方，很多<strong>不确定</strong>的都把<strong>原文</strong>贴出来了，附上了<strong>自己的理解</strong>，所以以下内容有哪里翻译有误请大家指出。</p>
+<p>翻译来源：iBook中搜索 Swift 下载 <a href="https://itunes.apple.com/cn/book/swift-programming-language/id1002622538?mt=11" target="_blank" rel="noopener">The Swift Programming Language (Swift 2 Prerelease)</a><br>原文地址：<a href="http://www.mrpeng.me/2015/06/26/Swift-2-0-Session-5-%E6%9E%9A%E4%B8%BE%E5%92%8C%E7%BB%93%E6%9E%84%E4%BD%93/">http://www.mrpeng.me/2015/06/26/Swift-2-0-Session-5-%E6%9E%9A%E4%B8%BE%E5%92%8C%E7%BB%93%E6%9E%84%E4%BD%93/</a></p>
+<p>##回顾<br>昨天主要学习了<code>Objects and Classes 对象和类</code><br>今天将要学习<code>Enumerations and Structures 枚举和结构体</code></p>
+<p>###Enumerations 枚举<br><a id="more"></a><br>使用<code>enum</code>来创建结构体。像类和其他所有命名类型一样，枚举可以包含methods。<br>​<br>    ​<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Rank</span>: <span class="title">Int</span> </span>&#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="type">Ace</span> = <span class="number">1</span></span><br><span class="line">	<span class="keyword">case</span> <span class="type">Two</span>, <span class="type">Three</span>, <span class="type">Four</span>, <span class="type">Five</span>, <span class="type">Six</span>, <span class="type">Seven</span>, <span class="type">Eight</span>, <span class="type">Nine</span>, <span class="type">Ten</span></span><br><span class="line">	<span class="keyword">case</span> <span class="type">Jack</span>, <span class="type">Queen</span>, <span class="type">King</span></span><br><span class="line">	<span class="function"><span class="keyword">func</span> <span class="title">simpleDescription</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">		<span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">			<span class="keyword">case</span> .<span class="type">Ace</span>:</span><br><span class="line">				<span class="keyword">return</span> <span class="string">"ace"</span></span><br><span class="line">			<span class="keyword">case</span> .<span class="type">Jack</span>:</span><br><span class="line">				<span class="keyword">return</span> <span class="string">"jack"</span></span><br><span class="line">			<span class="keyword">case</span> .<span class="type">Queen</span>:</span><br><span class="line">				<span class="keyword">return</span> <span class="string">"queen"</span></span><br><span class="line">			<span class="keyword">case</span> .<span class="type">King</span>:</span><br><span class="line">				<span class="keyword">return</span> <span class="string">"king"</span></span><br><span class="line">			<span class="keyword">default</span>:</span><br><span class="line">				<span class="keyword">return</span> <span class="type">String</span>(<span class="keyword">self</span>.rawValue)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> ace = <span class="type">Rank</span>.<span class="type">Ace</span></span><br><span class="line"><span class="keyword">let</span> aceRawValue = ace.rawValue</span><br><span class="line">​</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><strong>EXPERIMENT</strong><br>Write a function that compares two <code>Rank</code> values by comparing their raw values.<br>​<br>    eg:<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">func compare(<span class="selector-tag">a</span>: Rank, <span class="selector-tag">b</span>: Rank) -&gt; String &#123;</span><br><span class="line"><span class="selector-tag">var</span> bigger: Rank = a</span><br><span class="line"><span class="keyword">if</span> <span class="selector-tag">b</span><span class="selector-class">.rawValue</span> &gt; <span class="selector-tag">a</span><span class="selector-class">.rawValue</span> &#123;</span><br><span class="line">	bigger = b</span><br><span class="line">	&#125;</span><br><span class="line">	return <span class="string">"The bigger of the two is \(bigger.simpleDescription())"</span></span><br><span class="line">&#125;</span><br><span class="line">let two = Rank.Two</span><br><span class="line">let ten = Rank.Ten</span><br><span class="line">let result = compare(two, ten)</span><br><span class="line"><span class="function"><span class="title">println</span><span class="params">(result)</span></span></span><br><span class="line">​</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>在上面的例子中，枚举中的raw-value类型是<code>Int</code>，所以你只需要设置第一个原始值。剩下的原始值会按照顺序赋值。你也可以使用字符串或者浮点型作为枚举的原始值。使用<code>rawValue</code>属性访问枚举成员的原始值。</p>
+<p>使用<code>init?(rawValue:)</code>初始化一个从原始值获取到的枚举实例。</p>
+<pre><code>​<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> <span class="attr">convertedRank</span> = Rank(rawValue: <span class="number">3</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> <span class="attr">threeDescription</span> = convertedRank.simpleDescription()</span><br><span class="line">&#125;</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
+</code></pre><p>枚举的成员值是实际值，并不是原始值的另一种写法。实际上，如果原始值没有意义，你也不需要去设置它。</p>
+<pre><code>​<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">suit</span> </span>&#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="type">Spades</span>, <span class="type">Hearts</span>, <span class="type">Diamonds</span>, <span class="type">Clubs</span></span><br><span class="line">	<span class="function"><span class="keyword">func</span> <span class="title">simpleDescription</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">		<span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">			<span class="keyword">case</span> .<span class="type">Spades</span>:</span><br><span class="line">				<span class="keyword">return</span> <span class="string">"spades"</span></span><br><span class="line">			<span class="keyword">case</span> .<span class="type">Hearts</span>:</span><br><span class="line">				<span class="keyword">return</span> <span class="string">"hearts"</span></span><br><span class="line">			<span class="keyword">case</span> .<span class="type">Diamonds</span>:</span><br><span class="line">				<span class="keyword">return</span> <span class="string">"diamonds"</span></span><br><span class="line">			<span class="keyword">case</span> .<span class="type">Clubs</span>:</span><br><span class="line">				<span class="keyword">return</span> <span class="string">"clubs"</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> hearts = <span class="type">Suit</span>.<span class="type">Hearts</span></span><br><span class="line"><span class="keyword">let</span> heartsDescription = hearts.simpleDescription()</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
+</code></pre><blockquote>
+<p><strong>EXPERIMENT</strong><br>Add a color() method to Suit that returns “black” for spades and clubs,and returns “red” for hearts and diamonds.</p>
+</blockquote>
+<pre><code>eg:<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">func <span class="attribute">color</span>() -&gt; String &#123; </span><br><span class="line">    switch self &#123; </span><br><span class="line">    case <span class="selector-class">.Spades</span>, <span class="selector-class">.Clubs</span>: </span><br><span class="line">        return <span class="string">"black"</span> </span><br><span class="line">    case <span class="selector-class">.Hearts</span>, <span class="selector-class">.Diamonds</span>: </span><br><span class="line">        return <span class="string">"red"</span> </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
+</code></pre><p>注意，上面引用了枚举的<code>Hearts</code>成员的两种方式：给<code>hearts</code>赋值常量时，枚举成员<code>Suit.Hearts</code>通过它的全名来引用，因为常量没有显示指定的类型。在switch里面，枚举成员通过<code>.Hearts</code>缩写来引用，因为<code>self</code>的值已经知道是一个suit。当值的类型确定时，你可以使用缩写格式。</p>
+<p>###结构体<br>使用<code>struct</code>来创建一个结构体。结构体和类很多地方相同。比如方法和构造器。<strong>最大的不同一点：<code>结构体</code>是值类型，而<code>类</code>是引用类型即：分别创建一个结构体和一个类，然后分别初始化两个结构体(struct1，struct2)和两个类(class1,class2)实例，再分别给这一个结构和一个类赋值，那么另外一个结构体的值没有改变，而另外一个类的值改变了</strong>具体请传送<a href="http://www.cocoachina.com/ios/20140612/8780.html" target="_blank" rel="noopener">The Swift Programming Language–语言指南–类和结构体</a>。</p>
+<pre><code>​<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Card</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> rank: <span class="type">Rank</span></span><br><span class="line">	<span class="keyword">var</span> suit: <span class="type">Suit</span></span><br><span class="line">	<span class="function"><span class="keyword">func</span> <span class="title">simpleDescription</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"The <span class="subst">\(rank.simpleDescription()</span>) of <span class="subst">\(suit.simpleDescription()</span>)"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> threeOfSpades = <span class="type">Card</span>(rank: .<span class="type">Three</span>, suit: .<span class="type">Spades</span>)</span><br><span class="line">    <span class="keyword">let</span> <span class="type">ThreeOfSpadesDescription</span> = threeOfSpades.simpleDescription()</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
+</code></pre><blockquote>
+<p>EXPERIMENT<br>Add a method Card that creates a full deck of cards,with one card of each combination of rank and suit.</p>
+</blockquote>
+<pre><code>eg：<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Card</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> rank: <span class="type">Rank</span></span><br><span class="line">	<span class="keyword">var</span> suit: <span class="type">Suit</span></span><br><span class="line">	<span class="function"><span class="keyword">func</span> <span class="title">simpleDescription</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"The <span class="subst">\(rank.simpleDescription()</span>) of <span class="subst">\(suit.simpleDescription()</span>)"</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">init</span>(cardRank: <span class="type">Rank</span>, cardSuit: <span class="type">Suit</span>) &#123;</span><br><span class="line">		<span class="keyword">self</span>.rank = cardRank</span><br><span class="line">		<span class="keyword">self</span>.suit = cardSuit</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">func</span> <span class="title">Deck</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">		<span class="keyword">var</span> cardName = <span class="string">""</span></span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>...<span class="number">14</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> <span class="keyword">let</span> convertedRank = <span class="type">Rank</span>(rawValue: i) &#123;</span><br><span class="line">				<span class="keyword">self</span>.rank = convertedRank</span><br><span class="line">				<span class="keyword">for</span> y <span class="keyword">in</span> <span class="number">0</span>...<span class="number">5</span> &#123;</span><br><span class="line">					<span class="comment">//一定要把Suit的枚举定义成Int类型,不然这里会报错的</span></span><br><span class="line">					<span class="keyword">if</span> <span class="keyword">let</span> convertedSuit = <span class="type">Suit</span>(rawValue: y) &#123;</span><br><span class="line">						<span class="keyword">self</span>.suit = convertedSuit</span><br><span class="line">						cardName = <span class="string">"<span class="subst">\(cardName)</span> <span class="subst">\(<span class="keyword">self</span>.simpleDescription()</span>)"</span></span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> cardName</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line">    <span class="keyword">let</span> threeOfSpades = <span class="type">Card</span>(cardRank: .<span class="type">Three</span>, cardSuit: .<span class="type">Spades</span>) </span><br><span class="line">    <span class="keyword">let</span> threeOfSpadesDescription = threeOfSpades.simpleDescription() </span><br><span class="line">    threeOfSpades.<span class="type">Deck</span>()</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
+</code></pre><p>一个枚举成员的实例可以有实例值。同样的枚举成员的实例可以有不同的实例值。你可以在创建实例时传入值。传入的值和原始值是不同的：枚举成员的原始值对于所有实例来说都是相同的，并且是你在定义枚举时设置原始值。</p>
+<p>例如，考虑从服务器请求日出和日落时间。服务器会返回正常结果或者错误信息。</p>
+<pre><code>​<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">	enum ServerResponse &#123;</span><br><span class="line">		<span class="keyword">case</span> Result(<span class="built_in">String</span>, <span class="built_in">String</span>)</span><br><span class="line">		<span class="keyword">case</span> <span class="keyword">Error</span>(<span class="built_in">String</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">let</span> success = ServerResponse.Result(<span class="string">"6:00 am"</span>, <span class="string">"8:09 pm"</span>)</span><br><span class="line">	<span class="keyword">let</span> failure = ServerResponse.<span class="keyword">Error</span>(<span class="string">"Out of cheese."</span>)</span><br><span class="line">	</span><br><span class="line">	switch success &#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="keyword">let</span> .Result(sunrise, sunset):</span><br><span class="line">			<span class="keyword">let</span> serverResponse = <span class="string">"Sunrise is at \(sunrise) and sunset is at \(sunset)."</span></span><br><span class="line">		<span class="keyword">case</span> <span class="keyword">let</span> .<span class="keyword">Error</span>(<span class="keyword">error</span>):</span><br><span class="line">			<span class="keyword">let</span> serverResponse = <span class="string">"Failure...\(error)"</span></span><br><span class="line">	&#125;</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
+</code></pre><blockquote>
+<p><strong>EXPERIMENT</strong><br>Add a third case to <code>SearverResponse</code> and to the switch.</p>
+</blockquote>
+<pre><code>eg:<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">ServerResponse</span> </span>&#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="type">Result</span>(<span class="type">String</span>, <span class="type">String</span>)</span><br><span class="line">    <span class="keyword">case</span> <span class="type">Error</span>(<span class="type">String</span>)</span><br><span class="line">    <span class="keyword">case</span> <span class="type">ThirdCase</span>(<span class="type">String</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> success = <span class="type">ServerResponse</span>.<span class="type">Result</span>(<span class="string">"6:00 am"</span>, <span class="string">"8:09 pm"</span>)</span><br><span class="line"><span class="keyword">let</span> failure = <span class="type">ServerResponse</span>.<span class="type">Error</span>(<span class="string">"Out of cheese."</span>)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">switch</span> success &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">let</span> .<span class="type">Result</span>(sunrise, sunset):</span><br><span class="line">        <span class="keyword">let</span> serverResponse = <span class="string">"Sunrise is at <span class="subst">\(sunrise)</span> and sunset is at <span class="subst">\(sunset)</span>."</span></span><br><span class="line">        <span class="built_in">println</span>(serverResponse)</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">let</span> .<span class="type">Error</span>(error):</span><br><span class="line">        <span class="keyword">let</span> serverResponse = <span class="string">"Failure...<span class="subst">\(error)</span>"</span></span><br><span class="line">        <span class="built_in">println</span>(serverResponse)</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">let</span> .<span class="type">ThirdCase</span>(thirdCase):</span><br><span class="line">        <span class="keyword">let</span> serverResponse = <span class="string">"ThirdCase is <span class="subst">\(thirdCase)</span>"</span></span><br><span class="line">        <span class="built_in">println</span>(serverResponse)</span><br><span class="line">    &#125;</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
+</code></pre><p>——————————————<strong>2015-06-26</strong>—————————————</p>
+<blockquote>
+<ul>
+<li>结束时间：2015-06-26 17:50 </li>
+<li>完成内容：完成<code>Enumerations and Structures枚举和结构体</code>一个板块</li>
+<li>明天计划：完成<code>Protocol and Extensions代理和扩展</code></li>
+</ul>
+</blockquote>
+
+      
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2015/06/26/Mr.Peng学习Swift 2.0  Session 5 枚举和结构体/">Mr.Peng学习Swift 2.0 Session 5  枚举和结构体</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Mr.Peng 的个人博客">Mr.Peng</a></p>
+        <p><span>发布时间:</span>2015年06月26日 - 14时38分</p>
+        <p><span>最后更新:</span>2018年09月26日 - 01时38分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2015/06/26/Mr.Peng学习Swift 2.0  Session 5 枚举和结构体/" title="Mr.Peng学习Swift 2.0 Session 5  枚举和结构体">www.mrpeng.me/2015/06/26/Mr.Peng学习Swift 2.0  Session 5 枚举和结构体/</a>
+            <span class="copy-path" data-clipboard-text="原文: www.mrpeng.me/2015/06/26/Mr.Peng学习Swift 2.0  Session 5 枚举和结构体/　　作者: Mr.Peng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2015/06/27/Mr.Peng在Objective-C使用指纹解锁(附Demo)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Mr.Peng在Objective-C使用指纹解锁(附Demo)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/06/25/Mr.Peng在Hexo中为文章添加背景音乐/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mr.Peng在Hexo中为文章添加背景音乐</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'mrpeng',
+      repo: 'pengrun.github.io',
+      oauth: {
+        client_id: 'null',
+        client_secret: 'null',
+      },
+    })
+    gitment.render('gitments')
+</script>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2015/06/27/Mr.Peng在Objective-C使用指纹解锁(附Demo)/" title="上一篇: Mr.Peng在Objective-C使用指纹解锁(附Demo)">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2015/06/25/Mr.Peng在Hexo中为文章添加背景音乐/" title="下一篇: Mr.Peng在Hexo中为文章添加背景音乐">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/25/Mr.Peng在iOS12期间申请企业级账号流程/">Mr.Peng在iOS12期间申请企业级账号流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/25/Mr.Peng iOS Charts for Objective-C with Podcocoa 集成步骤/">Mr.Peng Charts for Objective-C with Podcocoa 集成步骤</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/Mr.Peng解决xcode fetching list of team time out, member center dead 问题/">Mr.Peng解决xcode fetching list of team time out问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/25/Mr.Peng 让你的App显示在“在…中打开…”菜单中/">Mr.Peng 让你的App显示在“在…中打开…”菜单中</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/Mr.Peng收集iOS三方资源库/">Mr.Peng收集iOS三方资源库</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/25/Mr.Peng教你正确使用R.Swift/">Mr.Peng教你正确使用R.Swift</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/25/Mr.Peng提交appstore之后无法显示构建版本问题/">Mr.Peng提交appstore之后无法显示构建版本问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/01/Mr.Peng回顾2016，展望2017/">Mr.Peng回顾2016，展望2017</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/25/Mr.Peng 汉化Zend Studio 13.5.1详细图文教程/">Mr.Peng 汉化Zend Studio 13.5.1详细图文教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/25/Mr.Peng在Macbook Pro MD313 拆光驱更换固态/">Mr.Peng在Macbook Pro MD313 拆光驱更换固态</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/05/Mr.Peng收集Hexo问题集/">Mr.Peng收集Hexo问题集</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/02/Mr.Peng安装Mac下载神器aria2/">Mr.Peng安装Mac下载神器aria2</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/25/Mr.Peng学习KVC、KVO/">Mr.Peng学习KVC、KVO</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/20/Mr-Peng在Xcode6上面修改Bundle-identifier/">Mr.Peng在Xcode6修改Bundle identifier(有pod)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/15/Mr.Peng在iOS9期间申请企业级账号流程/">Mr.Peng在iOS9期间申请企业级账号流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/03/Mr.Peng解决Objective-C中Button点击延迟问题/">Mr.Peng解决Objective-C中Button点击延迟问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/21/Mr.Peng推荐Objective-C中Storyboard小技巧(适合xib)/">Mr.Peng推荐Objective-C中Storyboard小技巧(适合xib)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/10/Mr.Peng在Objective-C中用代码Auto-Layout/">Mr.Peng在Objective-C中用代码Auto-Layout</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/30/Mr.Peng解决XCode6 iOS7控制器View整体上移问题/">Mr.Peng解决XCode6 iOS7控制器View整体上移问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/27/Mr.Peng在Objective-C使用指纹解锁(附Demo)/">Mr.Peng在Objective-C使用指纹解锁(附Demo)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/26/Mr.Peng学习Swift 2.0  Session 5 枚举和结构体/">Mr.Peng学习Swift 2.0 Session 5  枚举和结构体</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/25/Mr.Peng在Hexo中为文章添加背景音乐/">Mr.Peng在Hexo中为文章添加背景音乐</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/25/Mr.Peng学习Swift 2.0 Session 4/">Mr.Peng学习Swift 2.0 Session 4</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/25/Swift-2-0-Session-4-学习/">Swift 2.0 Session 4 学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/24/Mr.Peng学习Swift 2.0 Session 3/">Mr.Peng学习Swift 2.0 Session 3</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/24/Swift-2-0-Session-3-学习/">Swift 2.0: Session 3 学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/23/Mr.Peng学习Swift 2.0 Session 2/">Mr.Peng学习Swift 2.0 Session 2</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/23/Swift-2-0-Session-2-学习/">Swift 2.0: Session 2 学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/23/Mr.Peng学习Swift 2.0 Session 1/">Mr.Peng学习Swift 2.0 Session 1</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/23/Swift-2-0-Session-1-学习/">Swift 2.0: Session 1 学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/19/Mr.Peng在Mac上VMware-Fusion7-1-0安装Windows-10/">Mr.Peng在Mac上使用VMware Fusion7.1.0 安装 Windows 10</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/18/Mr.Peng暂停搭建Hexo/">Mr.Peng暂停搭建Hexo</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/18/Mr.Peng安装Hexo过程/">Mr.Peng使用Mac安装Hexo搭建博客</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 Mr.Peng
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?e2f31621848722c8af6d759635a08987";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

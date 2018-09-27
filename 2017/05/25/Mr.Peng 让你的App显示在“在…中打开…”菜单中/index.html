@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Mr.Peng 让你的App显示在“在…中打开…”菜单中 | Mr.Peng&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言朋友通过airDrop给我传图片时，接受后，自动保存在相册中了。但是当朋友通过airDrop给我发非图片非视频时，会提示”AirDrop打开方式…”，如下图：">
+<meta name="keywords" content="XCode 8,iOS 10,Objective-C,AirDrop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mr.Peng 让你的App显示在“在…中打开…”菜单中">
+<meta property="og:url" content="www.mrpeng.me/2017/05/25/Mr.Peng 让你的App显示在“在…中打开…”菜单中/index.html">
+<meta property="og:site_name" content="Mr.Peng&#39;s Blog">
+<meta property="og:description" content="前言朋友通过airDrop给我传图片时，接受后，自动保存在相册中了。但是当朋友通过airDrop给我发非图片非视频时，会提示”AirDrop打开方式…”，如下图：">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNbRwgw1fbnsfphsnuj30k00zk0u4.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79gw1fbnth7gwfkj30k40g0taz.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79gw1fbnthnal0hj30mu09ujsc.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79gw1fbntkdz4brj30mg0dh0u5.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79gw1fbntlu1a43j30mv0g7q4n.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79gw1fbnukeghxcj30k00zkdhy.jpg">
+<meta property="og:updated_time" content="2018-09-25T17:39:51.912Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mr.Peng 让你的App显示在“在…中打开…”菜单中">
+<meta name="twitter:description" content="前言朋友通过airDrop给我传图片时，接受后，自动保存在相册中了。但是当朋友通过airDrop给我发非图片非视频时，会提示”AirDrop打开方式…”，如下图：">
+<meta name="twitter:image" content="http://ww4.sinaimg.cn/large/006tNbRwgw1fbnsfphsnuj30k00zk0u4.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="Mr.Peng&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//img/favicon.jpg">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="//img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Mr.Peng</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">入猿未深，还待修行</p>
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives">All</a></li>
+                        
+                            <li><a href="/categories/WEB">WEB</a></li>
+                        
+                            <li><a href="/categories/MOBILE">MOBILE</a></li>
+                        
+                            <li><a href="/categories/PC">PC</a></li>
+                        
+                            <li><a href="/categories/转载">转载</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="/pengrun_520@gmail.com" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/pengrun" title="github">github</a>
+                            
+                                <a class="fl weibo" target="_blank" href="http://weibo.com/51200705" title="weibo">weibo</a>
+                            
+                                <a class="fl rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/AirDrop/" style="font-size: 10px;">AirDrop</a> <a href="/tags/Auto-Layout/" style="font-size: 10px;">Auto Layout</a> <a href="/tags/Bundle-identifier/" style="font-size: 10px;">Bundle identifier</a> <a href="/tags/Button/" style="font-size: 10px;">Button</a> <a href="/tags/Demo/" style="font-size: 11.43px;">Demo</a> <a href="/tags/Hexo/" style="font-size: 12.86px;">Hexo</a> <a href="/tags/KVO、KVC/" style="font-size: 10px;">KVO、KVC</a> <a href="/tags/MD313/" style="font-size: 10px;">MD313</a> <a href="/tags/Mac/" style="font-size: 15.71px;">Mac</a> <a href="/tags/Objective-C/" style="font-size: 17.14px;">Objective-C</a> <a href="/tags/Original/" style="font-size: 10px;">Original</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/R-Swfit/" style="font-size: 10px;">R.Swfit</a> <a href="/tags/Storyboard/" style="font-size: 10px;">Storyboard</a> <a href="/tags/Swift/" style="font-size: 20px;">Swift</a> <a href="/tags/TouchID/" style="font-size: 10px;">TouchID</a> <a href="/tags/XCode-8/" style="font-size: 14.29px;">XCode 8</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/Xcode6/" style="font-size: 10px;">Xcode6</a> <a href="/tags/Zend-Studio-13-5-1/" style="font-size: 10px;">Zend Studio 13.5.1</a> <a href="/tags/appstore/" style="font-size: 10px;">appstore</a> <a href="/tags/aria2/" style="font-size: 10px;">aria2</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/iOS-10/" style="font-size: 14.29px;">iOS 10</a> <a href="/tags/iOS12/" style="font-size: 10px;">iOS12</a> <a href="/tags/iOS9/" style="font-size: 11.43px;">iOS9</a> <a href="/tags/swift/" style="font-size: 10px;">swift</a> <a href="/tags/三方库/" style="font-size: 10px;">三方库</a> <a href="/tags/企业级账号/" style="font-size: 11.43px;">企业级账号</a> <a href="/tags/修改项目名/" style="font-size: 10px;">修改项目名</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/折腾/" style="font-size: 14.29px;">折腾</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/点击延迟/" style="font-size: 10px;">点击延迟</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/翻译/" style="font-size: 18.57px;">翻译</a> <a href="/tags/问题/" style="font-size: 10px;">问题</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://pengrun.github.io/">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">13年重庆理工大学毕业，2年iOS开发经验，目前南漂来深圳，从事车联网相关工作。16年5月离深回渝和之前的同事一起创业，2018年8月离开创业团队，目前在一家做民航系统的公司继续担任iOS开发。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Mr.Peng</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="//img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Mr.Peng</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">入猿未深，还待修行</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives">All</a></li>
+                
+                    <li><a href="/categories/WEB">WEB</a></li>
+                
+                    <li><a href="/categories/MOBILE">MOBILE</a></li>
+                
+                    <li><a href="/categories/PC">PC</a></li>
+                
+                    <li><a href="/categories/转载">转载</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="/pengrun_520@gmail.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/pengrun" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="http://weibo.com/51200705" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Mr.Peng 让你的App显示在“在…中打开…”菜单中" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/25/Mr.Peng 让你的App显示在“在…中打开…”菜单中/" class="article-date">
+      <time datetime="2017-05-25T01:31:43.000Z" itemprop="datePublished">2017-05-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Mr.Peng 让你的App显示在“在…中打开…”菜单中
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/MOBILE/">MOBILE</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AirDrop/">AirDrop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XCode-8/">XCode 8</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS-10/">iOS 10</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>朋友通过airDrop给我传图片时，接受后，自动保存在相册中了。但是当朋友通过airDrop给我发非图片非视频时，会提示”AirDrop打开方式…”，如下图：<a id="more"></a></p>
+<p><img src="http://ww4.sinaimg.cn/large/006tNbRwgw1fbnsfphsnuj30k00zk0u4.jpg" alt=""></p>
+<p>那么如何让自己的app能够显示在菜单中？那么现在一步一来操作。</p>
+<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p>从我自己的了解程度，总结以下流程，如果有问题，还待大家吐槽。</p>
+<ol>
+<li>airdrop传输最初的接收者是ios系统本身，而非任何app；</li>
+<li><ul>
+<li>当接收的文件是ios系统默认能够打开的（如.mp4、.jpeg、.tiff、iwork一套等是苹果默认能够打开的），在同意接收后，会自动保存在对应的目录下；</li>
+<li>当接收的文件不是ios系统默认能够打开的，那么同意接受后，会弹出选择打开方式（即选择三方app）的菜单列表（下面称菜单）；</li>
+</ul>
+</li>
+<li>三方app需要在系统中授权之后才能被加入到菜单；</li>
+<li>以三方app打开之后，这时候app才算是接收者，就要在三方app中，用专用接口去把接收到的文件移动到本地app中文件目录下。</li>
+<li>此时才能正常读取接受到的文件。</li>
+</ol>
+<p>注：此过程没接收那么当然不会保存在系统中来，但是如果你一旦用三方app打开之后，系统中接收到的文件移动到三方app中，那么系统中文件被删除了，如果你接受了，没有选择三方app，那么系统会自动清除此文件。</p>
+<h3 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h3><h4 id="添加文档类型"><a href="#添加文档类型" class="headerlink" title="添加文档类型"></a>添加文档类型</h4><p>要添加文档类型，请执行以下操作：</p>
+<ol>
+<li><p>在您的Xcode项目中，选择要添加文档类型的目标。</p>
+</li>
+<li><p>选择信息选项卡。</p>
+</li>
+<li><p>单击文档类型的公开按钮以打开文档类型。</p>
+</li>
+<li><p>点击“+”按钮。</p>
+</li>
+<li><p>在新创建的文档类型中：</p>
+</li>
+<li><p>​</p>
+<ul>
+<li>键入文档类型的名称。</li>
+<li>在“类型”部分填写新类型的UTI。</li>
+<li>提供文档的图标。</li>
+</ul>
+<p>​</p>
+</li>
+<li><p>单击公开三角形以打开其他文档类型属性。</p>
+</li>
+<li><p>单击表中以添加新的键和值。</p>
+</li>
+<li><p>​</p>
+<ul>
+<li>对于键值类型：CFBundleTypeRole。</li>
+<li>对于值类型：编辑器。</li>
+</ul>
+<p>​</p>
+</li>
+<li><p>单击+按钮添加另一个键/值对。</p>
+</li>
+<li><p>​</p>
+<ul>
+<li>对于键值类型：LSHandlerRank。</li>
+<li>对于值类型：Owner。</li>
+</ul>
+</li>
+</ol>
+<h4 id="添加自定义UTI"><a href="#添加自定义UTI" class="headerlink" title="添加自定义UTI"></a>添加自定义UTI</h4><p>如果要添加的文档类型是自定义文档类型或iOS不知道的文档类型，则需要为文档类型定义UTI。要添加新的UTI，请执行以下操作：</p>
+<ol>
+<li><p>在您的Xcode项目中，选择要添加新UTI的目标。</p>
+</li>
+<li><p>选择信息选项卡。</p>
+</li>
+<li><p>单击导出的UTI的公开按钮。</p>
+</li>
+<li><p>点击“+”按钮。</p>
+</li>
+<li><p>选择“添加导出的UTI”。</p>
+</li>
+<li><p>​</p>
+<ul>
+<li>在描述字段中，填写UTI的描述。</li>
+<li>在标识符字段中，填写UTI的标识符。</li>
+<li>在Conforms To字段中填写此新UTI符合的UTI列表。</li>
+</ul>
+<p>​</p>
+</li>
+<li><p>切换“其他导出的UTI属性”公开三角形以打开一个表，您可以在其中添加一些其他信息。</p>
+</li>
+<li><p>单击空表，将显示可添加到表中的项目列表。</p>
+</li>
+<li><p>键入“UTTypeTagSpecification”。</p>
+</li>
+<li><p>将类型设置为字典。</p>
+</li>
+<li><p>单击显示三角形将其打开，然后单击表行中的+按钮添加条目。</p>
+</li>
+<li><p>对于“新项目”，将名称更改为“public.filename-extension”。</p>
+</li>
+<li><p>对于项目的类型，将其更改为“Array”。</p>
+</li>
+<li><p>切换打开刚刚添加的项，然后点击表格行中的+按钮。</p>
+</li>
+<li><p>对于项0，将“值”更改为文档的文件扩展名。例如，txt，pdf，docx等</p>
+</li>
+</ol>
+<h3 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h3><h4 id="把app加入菜单中"><a href="#把app加入菜单中" class="headerlink" title="把app加入菜单中"></a>把app加入菜单中</h4><h5 id="创建新项目"><a href="#创建新项目" class="headerlink" title="创建新项目"></a>创建新项目</h5><p>此处省略XXX字</p>
+<h5 id="添加文档类型-1"><a href="#添加文档类型-1" class="headerlink" title="添加文档类型"></a>添加文档类型</h5><ol>
+<li><p><strong>增加类型</strong></p>
+<p>进入新项目的<code>TARGETS</code>–<code>Info</code>中<code>Document Types</code>点击<code>+</code>然后输入<code>Name</code>和<code>Types</code>，注意：<code>Types</code>最好输入<code>Bundle Identifier</code>。<img src="http://ww1.sinaimg.cn/large/006tNc79gw1fbnth7gwfkj30k40g0taz.jpg" alt=""></p>
+</li>
+<li><p>增加<strong>Additional document type properties</strong> </p>
+<p>点击 <code>Additional document type properties</code>之前的倒三角，然后点击展开后的空白区域会出现key-value键值对，然后输入<code>CFBundleTypeRole : Editor</code>和<code>LSHandlerRank :Owner</code>两组键值对。<img src="http://ww3.sinaimg.cn/large/006tNc79gw1fbnthnal0hj30mu09ujsc.jpg" alt=""></p>
+</li>
+<li><p>增加<strong>Exported UTIs</strong></p>
+<p>点击 <code>Exported UTIs</code>之前的倒三角，填写<code>Description</code>、<code>Identifier</code>、<code>Conforms To</code>信息<img src="http://ww2.sinaimg.cn/large/006tNc79gw1fbntkdz4brj30mg0dh0u5.jpg" alt=""></p>
+</li>
+<li><p>点击 <code>Additional exported UTI properties</code>之前的倒三角，然后点击展开后的空白区域会出现key-value键值对，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;UTTypeTagSpecification&quot;: &#123;</span><br><span class="line">        &quot;public.filename-extension&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;item 0&quot;: &quot;prdata&quot;,</span><br><span class="line">                &quot;url&quot;: &quot;http://www.google.com&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://ww4.sinaimg.cn/large/006tNc79gw1fbntlu1a43j30mv0g7q4n.jpg" alt=""></p>
+</li>
+</ol>
+<h5 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h5><p>通过airDrop发送<code>.prdata</code>为后缀的文件，接收手机就能展示出来app名字了。<img src="http://ww1.sinaimg.cn/large/006tNc79gw1fbnukeghxcj30k00zkdhy.jpg" alt=""></p>
+<h5 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h5><p>除了上面的场景菜单中加入了三方app，还适合通过airDrop以三方app打开(如打开邮件中的附件)</p>
+<h4 id="读取文件信息"><a href="#读取文件信息" class="headerlink" title="读取文件信息"></a>读取文件信息</h4><p>在appdelegate里面加入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary&lt;UIApplicationOpenURLOptionsKey, id&gt; *)options NS_AVAILABLE_IOS(9_0); // no equiv. notification. return NO if the application can&apos;t open for some reason</span><br></pre></td></tr></table></figure>
+<p>方法，处理系统传过来的URL，然后进行数据处理，代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary&lt;UIApplicationOpenURLOptionsKey, id&gt; *)options &#123;</span><br><span class="line">    if ([url isFileURL] &amp;&amp; [[[url absoluteString] pathExtension] isEqualToString:@&quot;prdata&quot;]) &#123;</span><br><span class="line">        [self copyItemAtURLtoDocumentsDirectory:url];</span><br><span class="line">        return YES;</span><br><span class="line">    &#125;</span><br><span class="line">    return NO;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//把接受到的文件移动到本地app文件目录下面</span><br><span class="line">- (BOOL)copyItemAtURLtoDocumentsDirectory:(NSURL *)url</span><br><span class="line">&#123;</span><br><span class="line">    NSError *error;</span><br><span class="line">    NSURL *copyToURL = [self applicationDocumentsDirectory];</span><br><span class="line">    NSString *fileName = [url lastPathComponent];</span><br><span class="line">    </span><br><span class="line">    copyToURL = [copyToURL URLByAppendingPathComponent:fileName isDirectory:NO];</span><br><span class="line">    </span><br><span class="line">    if ([[NSFileManager defaultManager] fileExistsAtPath:copyToURL.path]) &#123;</span><br><span class="line">        </span><br><span class="line">        NSURL *duplicateURL = copyToURL;</span><br><span class="line">        copyToURL = [copyToURL URLByDeletingPathExtension];</span><br><span class="line">        NSString *fileNameWithoutExtension = [copyToURL lastPathComponent]; //没有后缀的文件名</span><br><span class="line">        NSString *fileExtension = [url pathExtension]; //文件后缀</span><br><span class="line">        </span><br><span class="line">        int i = 1;</span><br><span class="line">        while ([[NSFileManager defaultManager] fileExistsAtPath:duplicateURL.path]) &#123;  //判断是否存在，存在就重新命名</span><br><span class="line">            copyToURL = [copyToURL URLByDeletingLastPathComponent];</span><br><span class="line">            copyToURL = [copyToURL URLByAppendingPathComponent:[NSString stringWithFormat:@&quot;%@–%i&quot;, fileNameWithoutExtension, i]];</span><br><span class="line">            copyToURL = [copyToURL URLByAppendingPathExtension:fileExtension];</span><br><span class="line">            duplicateURL = copyToURL;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    BOOL ok = [[NSFileManager defaultManager] moveItemAtURL:url toURL:copyToURL error:&amp;error]; //把系统传过来的url对应的文件 移动到 本地app中</span><br><span class="line">    if (!ok) &#123;</span><br><span class="line">        NSLog(@&quot;%@&quot;, [error localizedDescription]);</span><br><span class="line">    &#125;</span><br><span class="line">    [[NSNotificationCenter defaultCenter] postNotificationName:@&quot;kGetFileUrl&quot; object:copyToURL.path];</span><br><span class="line">    return ok;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (NSURL *)applicationDocumentsDirectory</span><br><span class="line">&#123;</span><br><span class="line">    NSString *documentsDirectory;</span><br><span class="line">    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);</span><br><span class="line">    if ([paths count] &gt; 0) &#123;</span><br><span class="line">        documentsDirectory = [paths objectAtIndex:0];</span><br><span class="line">    &#125;</span><br><span class="line">    return [NSURL fileURLWithPath:documentsDirectory];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="发送文件"><a href="#发送文件" class="headerlink" title="发送文件"></a>发送文件</h4><p>在VC里面加入<code>UIPopoverController</code>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">NSString *path1 = [[NSBundle mainBundle] pathForResource:@&quot;blog&quot; ofType:@&quot;prdata&quot;];</span><br><span class="line">    NSURL *url1 = [NSURL fileURLWithPath:path1];</span><br><span class="line">    PRAirDropData *item1 = [[PRAirDropData alloc] initWithURL:url1 subject:@&quot;blog&quot;];</span><br><span class="line">    </span><br><span class="line">    NSArray *items = [NSArray arrayWithObjects:item1, nil];</span><br><span class="line">    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];</span><br><span class="line">    </span><br><span class="line">    // Exclude all activities except AirDrop.</span><br><span class="line">    NSArray *excludedActivities = @[UIActivityTypePostToTwitter,</span><br><span class="line">                                    UIActivityTypePostToFacebook,</span><br><span class="line">                                    UIActivityTypePostToWeibo,</span><br><span class="line">                                    UIActivityTypeMessage,</span><br><span class="line">                                    UIActivityTypeMail,</span><br><span class="line">                                    UIActivityTypePrint,</span><br><span class="line">                                    UIActivityTypeCopyToPasteboard,</span><br><span class="line">                                    UIActivityTypeAssignToContact,</span><br><span class="line">                                    UIActivityTypeSaveToCameraRoll,</span><br><span class="line">                                    UIActivityTypeAddToReadingList,</span><br><span class="line">                                    UIActivityTypePostToFlickr,</span><br><span class="line">                                    UIActivityTypePostToVimeo,</span><br><span class="line">                                    UIActivityTypePostToTencentWeibo];</span><br><span class="line">    activityViewController.excludedActivityTypes = excludedActivities;</span><br><span class="line">    </span><br><span class="line">    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) &#123;</span><br><span class="line">        [self presentViewController:activityViewController animated:YES completion:nil];</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        if (![self.activityPopover isPopoverVisible]) &#123;</span><br><span class="line">            self.activityPopover = [[UIPopoverController alloc] initWithContentViewController:activityViewController];</span><br><span class="line">            [self.activityPopover presentPopoverFromRect:[sender1 frame]</span><br><span class="line">                                                  inView:self.view</span><br><span class="line">                                permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            [self.activityPopover dismissPopoverAnimated:YES];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><p>如果需要源码的请点击点击<a href="https://github.com/pengrun/PRAirDropDemo" target="_blank" rel="noopener">Demo</a></p>
+
+      
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/05/25/Mr.Peng 让你的App显示在“在…中打开…”菜单中/">Mr.Peng 让你的App显示在“在…中打开…”菜单中</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Mr.Peng 的个人博客">Mr.Peng</a></p>
+        <p><span>发布时间:</span>2017年05月25日 - 09时31分</p>
+        <p><span>最后更新:</span>2018年09月26日 - 01时39分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/05/25/Mr.Peng 让你的App显示在“在…中打开…”菜单中/" title="Mr.Peng 让你的App显示在“在…中打开…”菜单中">www.mrpeng.me/2017/05/25/Mr.Peng 让你的App显示在“在…中打开…”菜单中/</a>
+            <span class="copy-path" data-clipboard-text="原文: www.mrpeng.me/2017/05/25/Mr.Peng 让你的App显示在“在…中打开…”菜单中/　　作者: Mr.Peng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2017/06/24/Mr.Peng解决xcode fetching list of team time out, member center dead 问题/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Mr.Peng解决xcode fetching list of team time out问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/21/Mr.Peng收集iOS三方资源库/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mr.Peng收集iOS三方资源库</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#流程"><span class="toc-number">2.</span> <span class="toc-text">流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#理论"><span class="toc-number">3.</span> <span class="toc-text">理论</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#添加文档类型"><span class="toc-number">3.1.</span> <span class="toc-text">添加文档类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加自定义UTI"><span class="toc-number">3.2.</span> <span class="toc-text">添加自定义UTI</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实战"><span class="toc-number">4.</span> <span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#把app加入菜单中"><span class="toc-number">4.1.</span> <span class="toc-text">把app加入菜单中</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#创建新项目"><span class="toc-number">4.1.1.</span> <span class="toc-text">创建新项目</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#添加文档类型-1"><span class="toc-number">4.1.2.</span> <span class="toc-text">添加文档类型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#效果"><span class="toc-number">4.1.3.</span> <span class="toc-text">效果</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#场景"><span class="toc-number">4.1.4.</span> <span class="toc-text">场景</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#读取文件信息"><span class="toc-number">4.2.</span> <span class="toc-text">读取文件信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#发送文件"><span class="toc-number">4.3.</span> <span class="toc-text">发送文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#源码"><span class="toc-number">5.</span> <span class="toc-text">源码</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'mrpeng',
+      repo: 'pengrun.github.io',
+      oauth: {
+        client_id: 'null',
+        client_secret: 'null',
+      },
+    })
+    gitment.render('gitments')
+</script>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/06/24/Mr.Peng解决xcode fetching list of team time out, member center dead 问题/" title="上一篇: Mr.Peng解决xcode fetching list of team time out问题">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2017/04/21/Mr.Peng收集iOS三方资源库/" title="下一篇: Mr.Peng收集iOS三方资源库">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/25/Mr.Peng在iOS12期间申请企业级账号流程/">Mr.Peng在iOS12期间申请企业级账号流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/25/Mr.Peng iOS Charts for Objective-C with Podcocoa 集成步骤/">Mr.Peng Charts for Objective-C with Podcocoa 集成步骤</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/Mr.Peng解决xcode fetching list of team time out, member center dead 问题/">Mr.Peng解决xcode fetching list of team time out问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/25/Mr.Peng 让你的App显示在“在…中打开…”菜单中/">Mr.Peng 让你的App显示在“在…中打开…”菜单中</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/Mr.Peng收集iOS三方资源库/">Mr.Peng收集iOS三方资源库</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/25/Mr.Peng教你正确使用R.Swift/">Mr.Peng教你正确使用R.Swift</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/25/Mr.Peng提交appstore之后无法显示构建版本问题/">Mr.Peng提交appstore之后无法显示构建版本问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/01/Mr.Peng回顾2016，展望2017/">Mr.Peng回顾2016，展望2017</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/25/Mr.Peng 汉化Zend Studio 13.5.1详细图文教程/">Mr.Peng 汉化Zend Studio 13.5.1详细图文教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/25/Mr.Peng在Macbook Pro MD313 拆光驱更换固态/">Mr.Peng在Macbook Pro MD313 拆光驱更换固态</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/05/Mr.Peng收集Hexo问题集/">Mr.Peng收集Hexo问题集</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/02/Mr.Peng安装Mac下载神器aria2/">Mr.Peng安装Mac下载神器aria2</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/25/Mr.Peng学习KVC、KVO/">Mr.Peng学习KVC、KVO</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/20/Mr-Peng在Xcode6上面修改Bundle-identifier/">Mr.Peng在Xcode6修改Bundle identifier(有pod)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/15/Mr.Peng在iOS9期间申请企业级账号流程/">Mr.Peng在iOS9期间申请企业级账号流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/03/Mr.Peng解决Objective-C中Button点击延迟问题/">Mr.Peng解决Objective-C中Button点击延迟问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/21/Mr.Peng推荐Objective-C中Storyboard小技巧(适合xib)/">Mr.Peng推荐Objective-C中Storyboard小技巧(适合xib)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/10/Mr.Peng在Objective-C中用代码Auto-Layout/">Mr.Peng在Objective-C中用代码Auto-Layout</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/30/Mr.Peng解决XCode6 iOS7控制器View整体上移问题/">Mr.Peng解决XCode6 iOS7控制器View整体上移问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/27/Mr.Peng在Objective-C使用指纹解锁(附Demo)/">Mr.Peng在Objective-C使用指纹解锁(附Demo)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/26/Mr.Peng学习Swift 2.0  Session 5 枚举和结构体/">Mr.Peng学习Swift 2.0 Session 5  枚举和结构体</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/25/Mr.Peng在Hexo中为文章添加背景音乐/">Mr.Peng在Hexo中为文章添加背景音乐</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/25/Mr.Peng学习Swift 2.0 Session 4/">Mr.Peng学习Swift 2.0 Session 4</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/25/Swift-2-0-Session-4-学习/">Swift 2.0 Session 4 学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/24/Mr.Peng学习Swift 2.0 Session 3/">Mr.Peng学习Swift 2.0 Session 3</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/24/Swift-2-0-Session-3-学习/">Swift 2.0: Session 3 学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/23/Mr.Peng学习Swift 2.0 Session 2/">Mr.Peng学习Swift 2.0 Session 2</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/23/Swift-2-0-Session-2-学习/">Swift 2.0: Session 2 学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/23/Mr.Peng学习Swift 2.0 Session 1/">Mr.Peng学习Swift 2.0 Session 1</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/23/Swift-2-0-Session-1-学习/">Swift 2.0: Session 1 学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/19/Mr.Peng在Mac上VMware-Fusion7-1-0安装Windows-10/">Mr.Peng在Mac上使用VMware Fusion7.1.0 安装 Windows 10</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/18/Mr.Peng暂停搭建Hexo/">Mr.Peng暂停搭建Hexo</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/18/Mr.Peng安装Hexo过程/">Mr.Peng使用Mac安装Hexo搭建博客</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 Mr.Peng
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?e2f31621848722c8af6d759635a08987";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

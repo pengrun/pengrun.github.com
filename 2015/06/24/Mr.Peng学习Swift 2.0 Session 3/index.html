@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Mr.Peng学习Swift 2.0 Session 3 | Mr.Peng&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="##申明我不是一个专业翻译人员，肯定会有翻译理解有误的地方，很多不确定的都把原文贴出来了，附上了自己的理解，所以以下内容有哪里翻译有误请大家指出。 翻译来源：iBook中搜索 Swift 下载 The Swift Programming Language (Swift 2 Prerelease)原文地址：http://www.mrpeng.me/2015/06/24/Swift-2-0-Sessi">
+<meta name="keywords" content="Swift,翻译">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mr.Peng学习Swift 2.0 Session 3">
+<meta property="og:url" content="www.mrpeng.me/2015/06/24/Mr.Peng学习Swift 2.0 Session 3/index.html">
+<meta property="og:site_name" content="Mr.Peng&#39;s Blog">
+<meta property="og:description" content="##申明我不是一个专业翻译人员，肯定会有翻译理解有误的地方，很多不确定的都把原文贴出来了，附上了自己的理解，所以以下内容有哪里翻译有误请大家指出。 翻译来源：iBook中搜索 Swift 下载 The Swift Programming Language (Swift 2 Prerelease)原文地址：http://www.mrpeng.me/2015/06/24/Swift-2-0-Sessi">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-25T17:38:02.030Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mr.Peng学习Swift 2.0 Session 3">
+<meta name="twitter:description" content="##申明我不是一个专业翻译人员，肯定会有翻译理解有误的地方，很多不确定的都把原文贴出来了，附上了自己的理解，所以以下内容有哪里翻译有误请大家指出。 翻译来源：iBook中搜索 Swift 下载 The Swift Programming Language (Swift 2 Prerelease)原文地址：http://www.mrpeng.me/2015/06/24/Swift-2-0-Sessi">
+  
+    <link rel="alternative" href="/atom.xml" title="Mr.Peng&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//img/favicon.jpg">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="//img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Mr.Peng</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">入猿未深，还待修行</p>
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives">All</a></li>
+                        
+                            <li><a href="/categories/WEB">WEB</a></li>
+                        
+                            <li><a href="/categories/MOBILE">MOBILE</a></li>
+                        
+                            <li><a href="/categories/PC">PC</a></li>
+                        
+                            <li><a href="/categories/转载">转载</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="/pengrun_520@gmail.com" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/pengrun" title="github">github</a>
+                            
+                                <a class="fl weibo" target="_blank" href="http://weibo.com/51200705" title="weibo">weibo</a>
+                            
+                                <a class="fl rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/AirDrop/" style="font-size: 10px;">AirDrop</a> <a href="/tags/Auto-Layout/" style="font-size: 10px;">Auto Layout</a> <a href="/tags/Bundle-identifier/" style="font-size: 10px;">Bundle identifier</a> <a href="/tags/Button/" style="font-size: 10px;">Button</a> <a href="/tags/Demo/" style="font-size: 11.43px;">Demo</a> <a href="/tags/Hexo/" style="font-size: 12.86px;">Hexo</a> <a href="/tags/KVO、KVC/" style="font-size: 10px;">KVO、KVC</a> <a href="/tags/MD313/" style="font-size: 10px;">MD313</a> <a href="/tags/Mac/" style="font-size: 15.71px;">Mac</a> <a href="/tags/Objective-C/" style="font-size: 17.14px;">Objective-C</a> <a href="/tags/Original/" style="font-size: 10px;">Original</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/R-Swfit/" style="font-size: 10px;">R.Swfit</a> <a href="/tags/Storyboard/" style="font-size: 10px;">Storyboard</a> <a href="/tags/Swift/" style="font-size: 20px;">Swift</a> <a href="/tags/TouchID/" style="font-size: 10px;">TouchID</a> <a href="/tags/XCode-8/" style="font-size: 14.29px;">XCode 8</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/Xcode6/" style="font-size: 10px;">Xcode6</a> <a href="/tags/Zend-Studio-13-5-1/" style="font-size: 10px;">Zend Studio 13.5.1</a> <a href="/tags/appstore/" style="font-size: 10px;">appstore</a> <a href="/tags/aria2/" style="font-size: 10px;">aria2</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/iOS-10/" style="font-size: 14.29px;">iOS 10</a> <a href="/tags/iOS12/" style="font-size: 10px;">iOS12</a> <a href="/tags/iOS9/" style="font-size: 11.43px;">iOS9</a> <a href="/tags/swift/" style="font-size: 10px;">swift</a> <a href="/tags/三方库/" style="font-size: 10px;">三方库</a> <a href="/tags/企业级账号/" style="font-size: 11.43px;">企业级账号</a> <a href="/tags/修改项目名/" style="font-size: 10px;">修改项目名</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/折腾/" style="font-size: 14.29px;">折腾</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/点击延迟/" style="font-size: 10px;">点击延迟</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/翻译/" style="font-size: 18.57px;">翻译</a> <a href="/tags/问题/" style="font-size: 10px;">问题</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://pengrun.github.io/">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">13年重庆理工大学毕业，2年iOS开发经验，目前南漂来深圳，从事车联网相关工作。16年5月离深回渝和之前的同事一起创业，2018年8月离开创业团队，目前在一家做民航系统的公司继续担任iOS开发。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Mr.Peng</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="//img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Mr.Peng</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">入猿未深，还待修行</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives">All</a></li>
+                
+                    <li><a href="/categories/WEB">WEB</a></li>
+                
+                    <li><a href="/categories/MOBILE">MOBILE</a></li>
+                
+                    <li><a href="/categories/PC">PC</a></li>
+                
+                    <li><a href="/categories/转载">转载</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="/pengrun_520@gmail.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/pengrun" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="http://weibo.com/51200705" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Mr.Peng学习Swift 2.0 Session 3" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/24/Mr.Peng学习Swift 2.0 Session 3/" class="article-date">
+      <time datetime="2015-06-24T01:14:27.000Z" itemprop="datePublished">2015-06-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Mr.Peng学习Swift 2.0 Session 3
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/MOBILE/">MOBILE</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>##申明<br>我<strong>不是</strong>一个<strong>专业翻译人员</strong>，肯定会有<strong>翻译理解有误</strong>的地方，很多<strong>不确定</strong>的都把<strong>原文</strong>贴出来了，附上了<strong>自己的理解</strong>，所以以下内容有哪里翻译有误请大家指出。</p>
+<p>翻译来源：iBook中搜索 Swift 下载 <a href="https://itunes.apple.com/cn/book/swift-programming-language/id1002622538?mt=11" target="_blank" rel="noopener">The Swift Programming Language (Swift 2 Prerelease)</a><br>原文地址：<a href="http://www.mrpeng.me/2015/06/24/Swift-2-0-Session-3-%E5%AD%A6%E4%B9%A0/">http://www.mrpeng.me/2015/06/24/Swift-2-0-Session-3-%E5%AD%A6%E4%B9%A0/</a></p>
+<p>##回顾<br>昨天主要学习了<code>let常量</code>和<code>var变量</code>的命名语法规范和不同类型之间相互转换的问题。<br>今天将要学习<code>Control Flow控制流</code>和<code>Functions and Closures函数和闭包</code></p>
+<a id="more"></a>
+<p>##Control Flow（控制流）<br>使用<code>if</code>和<code>switch</code>作为条件语句，使用<code>for-in</code>,<code>for</code>,<code>while</code>,<code>repeat-while</code>作为循环语句时，大括号<code>{}</code>外的条件或者循环变量是可选的，<code>{}</code>里面的主体是必须存在。</p>
+<pre><code><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let individualScores = [<span class="number">75</span>, <span class="number">43</span>, <span class="number">103</span>, <span class="number">87</span>, <span class="number">12</span>]</span><br><span class="line">var teamScore = <span class="number">0</span></span><br><span class="line">for score in individualScores&#123;</span><br><span class="line">	if score &gt; <span class="number">50</span>&#123;</span><br><span class="line">		teamScore += <span class="number">3</span></span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		teamScore += <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">print(teamScore)</span><br></pre></td></tr></table></figure>
+</code></pre><blockquote>
+<p>答案：11</p>
+</blockquote>
+<p>###if    </p>
+<p>在<code>if</code>语句中，条件必须作为一个Boolean值来呈现–如果代码如：<code>if score{...}</code>就会报错。<br>如果你一起使用<code>if</code>和<code>let</code>的话，这些值就会丢失。这些值就作为了可选。可选值、包含值、nil都表明一个值的缺失。在一个变量类型的后面写一个问号，这样就作为了这个变量为可选。</p>
+<pre><code><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> optionalString: <span class="built_in">String</span>? = <span class="string">"Hello"</span> <span class="comment">//这个变量变为了可选值</span></span><br><span class="line"><span class="built_in">print</span>(optionalString == nil)</span><br></pre></td></tr></table></figure>
+</code></pre><blockquote>
+<p>答案：false<br>原因：optionalString = “Hello”   != nil  所以print(optionalString == nil) 为false</p>
+</blockquote>
+<pre><code><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> optionalName: <span class="type">String</span>? = <span class="string">"John Appleseed"</span></span><br><span class="line"><span class="keyword">var</span> greeting = <span class="string">"Hello!"</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> name = optionalName &#123;</span><br><span class="line">	greeting = <span class="string">"Hello,<span class="subst">\(name)</span>"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">print</span>(greeting)</span><br></pre></td></tr></table></figure>
+</code></pre><blockquote>
+<p>答案：Hello,John Appleseed<br>原因：let name = optionalName 判定为ture，所以会进入if语句<br>EXPERIMENT<br>Change optionalName to nil. What greeting do you get? Add an else clause that sets a different if optionalName is nil.<br>    eg:<br>    <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> optionalName1: <span class="type">String</span>? = <span class="literal">nil</span></span><br><span class="line"><span class="keyword">var</span> greeting1 = <span class="string">"Hello!"</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> name = optionalName1 &#123;</span><br><span class="line">   greeting1 = <span class="string">"Hello,<span class="subst">\(name)</span>"</span></span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">   	greeting1 = <span class="string">"Hello,Mr.Peng"</span></span><br><span class="line">   &#125;</span><br><span class="line">   <span class="built_in">println</span>(greeting1)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>答案：Hello,Mr.Peng<br>原因：因为optionalName1 为nil -&gt; let name = optionalName1 为false，所以无法进入if语句</p>
+</blockquote>
+<p>###Switch<br>Swiches支持任意类型的数据并且可以执行大数据的比较，意思就是说不限于整形和<code>tests For equality(平等测试？)</code></p>
+<pre><code><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> vegetable = <span class="string">"red repper"</span></span><br><span class="line"><span class="keyword">switch</span> vegetable &#123;</span><br><span class="line"><span class="keyword">case</span> <span class="string">"celery"</span>:</span><br><span class="line">	<span class="keyword">let</span> vegetableComment = <span class="string">"Add some reisins and make ants on a log."</span></span><br><span class="line"><span class="keyword">case</span> <span class="string">"cucumber"</span>,<span class="string">"watercress"</span>:</span><br><span class="line">	<span class="keyword">let</span> vegetableComment = <span class="string">"That would make a good tea sandwich."</span></span><br><span class="line"><span class="keyword">case</span> <span class="keyword">let</span> x <span class="keyword">where</span> x.hasSuffix(<span class="string">"pepper"</span>):</span><br><span class="line">	<span class="keyword">let</span> vegetableComment = <span class="string">"Is it a spicy <span class="subst">\(x)</span>?"</span></span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">	<span class="keyword">let</span> vegetableComment = <span class="string">"Everything tastes good in soup."</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><blockquote>
+<p>EXPERIMENT</p>
+<p>Try removing the default case. What error do you get? </p>
+</blockquote>
+<pre><code>error:
+    Switch must be exhaustive, consider adding a default clause
+    我理解的意思是：Switch中case均表示的开，既然switch从字面来说是开关，既然有开，那么必须存在关，那么default就是默认关闭状态，就必须存在，不能remove。
+</code></pre><p><strong>注意</strong></p>
+<p>细心的同学已经发现了，在Objective-C中Swich case后面必须跟上<code>break</code>。那么在这里为什么没有加上<code>break</code>呢？</p>
+<blockquote>
+<p>原文：After executing the code inside the switch case that matched, the program exits form the switch statement. Execution doesn’t continue to the next case, so there is no need to explicitly break out of the switch at the end of each case’s code.</p>
+</blockquote>
+<ul>
+<li>我的解释：因为Swift中的switch执行到case里面之后，程序就将跳出switch。如果执行不到case里面，就会默认进入到default里面，执行完default之后，同样也会跳出switch循环。所以没必要一定要加入<code>break</code>让其强制跳出。当然如果你非要加入<code>break</code>呢，程序不会报错，也是可以运行的。</li>
+</ul>
+<p>###for-in<br>你可以使用<code>for-in</code>遍历dictionary的每一对key-value对应的值。Dictionaries是无序集合，所以他们的keys和values遍历出来是没有顺序的。</p>
+<pre><code><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">let interestingNumbers = [</span><br><span class="line">	<span class="string">"Prime"</span>: [<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">11</span> ,<span class="number">13</span>],</span><br><span class="line">	<span class="string">"Fibonacci"</span>: [<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">8</span>],</span><br><span class="line">	<span class="string">"Square"</span>: [<span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>, <span class="number">25</span>],</span><br><span class="line">]</span><br><span class="line"><span class="selector-tag">var</span> largest = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> (kind, numbers) <span class="keyword">in</span> interestingNumbers &#123;</span><br><span class="line">	<span class="keyword">for</span> number <span class="keyword">in</span> numbers &#123;</span><br><span class="line">		<span class="keyword">if</span> number &gt; largest &#123;</span><br><span class="line">			largest = number</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="title">print</span><span class="params">(largest)</span></span></span><br></pre></td></tr></table></figure>
+</code></pre><blockquote>
+<p>答案：25<br>原因：你可以把它看做是取dictionary中最大的value，因为在<code>if</code>语句中，是判断当前的value是否大于<code>largest</code>，如果大于那么<code>largest</code>的值重新被定义。所以最终取出最大的值。</p>
+</blockquote>
+<p>###While<br>使用<code>while</code>去循环遍历代码块直到条件改变为止。循环中的条件能够在最后被替换，确保在循环中能够至少执行一次。</p>
+<pre><code>XCode 7 or later:
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">var</span> <span class="built_in">n</span> = <span class="number">2</span></span><br><span class="line">while <span class="built_in">n</span> &lt; <span class="number">100</span> &#123;</span><br><span class="line">	<span class="built_in">n</span> = <span class="built_in">n</span> * <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">print(<span class="built_in">n</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">var</span> m = <span class="number">2</span></span><br><span class="line">repeat &#123;</span><br><span class="line">	m = m * <span class="number">2</span></span><br><span class="line">&#125;while m &lt; <span class="number">100</span></span><br><span class="line">print(m)</span><br></pre></td></tr></table></figure>
+
+
+XCode 6.3 or earlier:
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">2</span></span><br><span class="line"><span class="keyword">while</span> n &lt; <span class="number">100</span> &#123;</span><br><span class="line">	n = n * <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">print</span>(n)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> m = <span class="number">2</span></span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">	m = m * <span class="number">2</span></span><br><span class="line">&#125;<span class="keyword">while</span> m &lt; <span class="number">100</span></span><br><span class="line"><span class="built_in">print</span>(m)</span><br></pre></td></tr></table></figure>
+</code></pre><blockquote>
+<p>答案：128，128<br>疑问：虽说最终结果是等价，而且我也测试了很多数据也是一样的，但是始终有一个疑问，就是说，第一个是先判断，后计算，第二个是先计算，后判断，总感觉这里面有问题，可是一直未找到最终问题所在，如果有人明白的，请告诉我，谢谢。</p>
+</blockquote>
+<p>上面两个循环分别等价于下面两个<code>for-in</code></p>
+<pre><code><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> firstForLoop = 0</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> 0..&lt; 4 &#123;</span><br><span class="line">	firstForLoop += <span class="built_in">i</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">print</span>(firstForLoop)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> secondForLoop = 0</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">var</span> i = 0; i &lt; 4; ++i &#123;</span><br><span class="line">	secondForLoop += <span class="built_in">i</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">print</span>(secondForLoop)</span><br></pre></td></tr></table></figure>
+</code></pre><p>使用<code>..&lt;</code>表示小于上限值，使用<code>...</code>表示包括上限值。</p>
+<p>##Functions and Closures（函数和闭包）</p>
+<p>###Functions<br>使用<code>func</code>申明一个函数。按照其名称带有<code>圆括号()</code>中的参数列表调用函数。使用-&gt;从函数的返回类型中分离出的参数名和类型。</p>
+<pre><code><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">greet</span><span class="params">(name: String, day: String)</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">"Hello <span class="subst">\(name)</span>, today is <span class="subst">\(day)</span>."</span></span><br><span class="line">&#125;</span><br><span class="line">greet(<span class="string">"Bob"</span>, <span class="string">"Tuesday"</span>)</span><br></pre></td></tr></table></figure>
+</code></pre><p>使用一个复合的元组–例如，从函数中返回多个值。这个元组中的元素将和名字还有数字有关。</p>
+<pre><code><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">func calculateStatistics(scores: [Int]) -&gt; (<span class="built_in">min</span>: Int, <span class="built_in">max</span>: Int, <span class="built_in">sum</span>: Int) &#123;</span><br><span class="line">	<span class="built_in">var</span> <span class="built_in">min</span> = scores[<span class="number">0</span>]</span><br><span class="line">	<span class="built_in">var</span> <span class="built_in">max</span> = scores[<span class="number">0</span>]</span><br><span class="line">	<span class="built_in">var</span> <span class="built_in">sum</span> = <span class="number">0</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> score <span class="keyword">in</span> scroes &#123;</span><br><span class="line">		<span class="keyword">if</span> score &gt; <span class="built_in">max</span> &#123;</span><br><span class="line">			<span class="built_in">max</span> = score</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> scroe &lt; <span class="built_in">min</span> &#123;</span><br><span class="line">			<span class="built_in">min</span> = scroe</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="built_in">sum</span> += score</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> (<span class="built_in">min</span>, <span class="built_in">max</span>, <span class="built_in">sum</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">let</span> statistics = calculateStatistics([<span class="number">5</span>, <span class="number">3</span>, <span class="number">100</span>, <span class="number">3</span>, <span class="number">9</span>])</span><br><span class="line"><span class="built_in">print</span>(statistics.<span class="built_in">sum</span>)</span><br><span class="line"><span class="built_in">print</span>(statistics.2)</span><br></pre></td></tr></table></figure>
+</code></pre><blockquote>
+<p>答案：120；120<br>原因：其实这个方法转换成Objective-C的话，应该是这样：</p>
+</blockquote>
+<pre><code>- (NSArray *)calculateStatistices:(NSArray *)scores
+{
+    ....
+    min = ..
+    max = ..
+    sum = ..
+    return @[min,max,sum];
+}
+</code></pre><blockquote>
+<p>所以<code>statistics.sum</code>和<code>statistics.2</code>的指针都是指向的元组中的第三个（0开始，2结束），这个<code>let statistics = calculateStatistics([5, 3, 100, 3, 9])</code>常量，其实可以理解为一个传参后返回的一个数组。</p>
+</blockquote>
+<p>函数也能够接受数目可变的参数，收集他们到一个数组。<br>    <figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">func sumOf(numbers: Int...) -&gt; Int &#123;</span><br><span class="line">	var <span class="built_in">sum</span> = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> number <span class="built_in">in</span> numbers &#123;</span><br><span class="line">		<span class="built_in">sum</span> += number</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">sum</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> <span class="built_in">sum</span> = sumOf()</span><br><span class="line">   <span class="keyword">let</span> sum1 = sumOf(<span class="number">42</span>, <span class="number">597</span>, <span class="number">12</span>)</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>答案：sum：0；sum1：651（42 + 597 + 12）</p>
+</blockquote>
+<blockquote>
+<p>EXPERIMENT</p>
+</blockquote>
+<pre><code>eg:
+    <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">averageOf</span><span class="params">(numbers: Float...)</span></span> -&gt; <span class="type">Float</span> &#123;</span><br><span class="line">          <span class="keyword">var</span> average : <span class="type">Float</span> = <span class="number">0.0</span></span><br><span class="line">          <span class="keyword">var</span> averageSum: <span class="type">Float</span> = <span class="number">0.0</span></span><br><span class="line">          <span class="keyword">for</span> number:<span class="type">Float</span> <span class="keyword">in</span> numbers &#123;</span><br><span class="line">              averageSum += number</span><br><span class="line">          &#125;</span><br><span class="line">          </span><br><span class="line">          <span class="keyword">if</span> numbers.<span class="built_in">count</span> != <span class="number">0</span> &#123; <span class="comment">//如果不判断是否为空，其实也能编译成功，只是从编程严谨的角度上来说，最好写上。</span></span><br><span class="line">              average = <span class="type">Float</span>(averageSum) / <span class="type">Float</span>(numbers.<span class="built_in">count</span>)</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> average</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">let</span> average = averageOf();</span><br><span class="line">      <span class="keyword">let</span> average1 = averageOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10.10</span>)</span><br><span class="line">      <span class="built_in">println</span>(average,average1)</span><br></pre></td></tr></table></figure>
+</code></pre><blockquote>
+<p>答案：average：0.0；average1：5.51</p>
+</blockquote>
+<p>可以<code>nested(嵌套)</code>函数，嵌套的函数可以通过在外面申明的函数进行传值。你可以用嵌套函数来管理你很长或者很复杂的代码。</p>
+<pre><code><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">returnFiftenn</span><span class="params">()</span> -&gt; <span class="title">Int</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> y = <span class="number">10</span></span><br><span class="line">	<span class="function"><span class="keyword">func</span> <span class="title">add</span><span class="params">()</span></span> &#123;</span><br><span class="line">		y += <span class="number">5</span></span><br><span class="line">	&#125;</span><br><span class="line">	add()</span><br><span class="line">	<span class="keyword">return</span> y</span><br><span class="line">&#125;</span><br><span class="line">returnFifteen()</span><br></pre></td></tr></table></figure>
+</code></pre><blockquote>
+<p>答案：15</p>
+</blockquote>
+<p>函数是一个<code>first-class type（一流类型？）</code>。意思就是说一个函数能够以另一个函数作为返回值。</p>
+<pre><code><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">makeIncrementer</span><span class="params">()</span> -&gt; <span class="params">(Int -&gt; Int)</span> &#123;</span></span><br><span class="line">	<span class="function"><span class="keyword">func</span> <span class="title">addOne</span><span class="params">(number: Int)</span> -&gt; <span class="title">Int</span> &#123;</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>+ <span class="built_in">number</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> addOne</span><br><span class="line">&#125;</span><br><span class="line">var increment = makeIncrementer()</span><br><span class="line">increment</span><br></pre></td></tr></table></figure>
+</code></pre><p>函数可以将另一个函数作为其中参数</p>
+<pre><code><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">hasAnyMatches</span><span class="params">(list: [Int], condition: Int -&gt; Bool)</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">	<span class="keyword">for</span> item <span class="keyword">in</span> list &#123;</span><br><span class="line">		<span class="keyword">if</span> condition(item) &#123;</span><br><span class="line">			reutrn <span class="literal">true</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">lessThanTen</span><span class="params">(number: Int)</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> number &lt; <span class="number">10</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> numbers = [<span class="number">20</span>, <span class="number">19</span>, <span class="number">7</span>, <span class="number">12</span>]</span><br><span class="line">hasAnyMatches(numbers, condition: lessThanTen)</span><br></pre></td></tr></table></figure>
+</code></pre><p>###Closures<br>函数其实是闭包的特殊情况：代码块能够延迟调用。闭包中的代码可以在创建闭包所在的范围内，能够访问变量和函数之类的东西，甚至闭包关闭了也能在不同的范围中执行–下面有一个例子。你可以写一个没有名字的闭包，代码放在大括号（<code>{}</code>）里面。使用<code>in</code>来分离参数和返回的类型。</p>
+<pre><code><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">numbers.map(&#123;</span><br><span class="line">	(<span class="built_in">number</span>: <span class="built_in">Int</span>) -&gt; <span class="built_in">Int</span> <span class="keyword">in</span></span><br><span class="line">	let result = <span class="number">3</span> * <span class="built_in">number</span></span><br><span class="line">	<span class="keyword">return</span> result</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</code></pre><blockquote>
+<p>答案：[3，6，9，12，15，18，21，24，27]</p>
+</blockquote>
+<blockquote>
+<p>EXPERIMENT<br>Rewrite the closure to return zero for all odd numbers</p>
+</blockquote>
+<pre><code>eg:
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let allNumber = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,]</span><br><span class="line">let odd = numbers.map(&#123;</span><br><span class="line">	(<span class="built_in">number</span>: <span class="built_in">Int</span>) -&gt; <span class="built_in">Int</span> <span class="keyword">in</span></span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">number</span> % <span class="number">2</span> != <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">	&#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="built_in">number</span></span><br><span class="line">   &#125;)</span><br><span class="line">   println(odd)</span><br></pre></td></tr></table></figure>
+</code></pre><blockquote>
+<p>答案：[0, 2, 0, 4, 0, 6, 0, 8, 0]</p>
+</blockquote>
+<p>有很多种方法能把闭包写的很简洁。当一个闭包的类型已经知道的时候，比如代理回调，就可以不用去在乎参数的类型。<code>Single statement closures implicitly return the value of their only statement(单条语句的闭包不能确切的返回他们唯一的语句值?)</code></p>
+<pre><code><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> mapedNumbers = numbers.<span class="keyword">map</span>(&#123;<span class="keyword">number</span> in <span class="number">3</span> * <span class="keyword">number</span>&#125;)</span><br><span class="line"><span class="keyword">print</span>(mapedNumbers)</span><br></pre></td></tr></table></figure>
+</code></pre><p>你可以按名称引用参数而不是按数目引用—这种方法在很短的闭包中尤其有用。一个闭包作为最后一个参数传递给函数时，会立即出现在小括号(<code>()</code>)之后。当一个闭包只有一个参数传递给函数时，你可以省去小括号。</p>
+<pre><code>XCode 7 or later
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]</span><br><span class="line">let sortedNumbers = numbers.sort &#123; $<span class="number">0</span> &gt; $<span class="number">1</span> &#125;</span><br><span class="line">print(sortedNumbers)</span><br></pre></td></tr></table></figure>
+
+
+XCode 7 earlier
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]</span><br><span class="line">let sortedNumbers = sorted(numbers) &#123; $<span class="number">0</span> &gt; $<span class="number">1</span> &#125;</span><br><span class="line">print(sortedNumbers)</span><br></pre></td></tr></table></figure>
+</code></pre><p>##收获</p>
+<p>###类型强制转换<br>Int转换为String</p>
+<pre><code><figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> intVar : <span class="built_in">Int</span> = <span class="number">3</span></span><br><span class="line"><span class="keyword">let</span> strVar : <span class="built_in">String</span> = <span class="built_in">String</span>(intVar)	//方法<span class="number">1</span></span><br><span class="line">//<span class="keyword">let</span> strVar : <span class="built_in">String</span> = \(int)			//方法<span class="number">2</span></span><br></pre></td></tr></table></figure>
+</code></pre><p>String转换为Int</p>
+<pre><code><figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> strVar : <span class="built_in">String</span> = <span class="string">"123"</span></span><br><span class="line"><span class="keyword">let</span> intVar : <span class="built_in">Int</span>? = strVar.toInt()</span><br></pre></td></tr></table></figure>
+</code></pre><p>Double转换为String</p>
+<pre><code><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">Double</span><span class="selector-class">.bridgeToObjectiveC</span>()<span class="selector-class">.stringValue</span></span><br></pre></td></tr></table></figure>
+</code></pre><p>Double保留两位小数稍麻烦些，需要对Double进行扩展：</p>
+<pre><code><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Double</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">func</span> <span class="title">format</span><span class="params">(f: String)</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="type">NSString</span>(format: <span class="string">"%<span class="subst">\(f)</span>f"</span>, <span class="keyword">self</span>)</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> myDouble = <span class="number">1.234567</span></span><br><span class="line"><span class="built_in">println</span>(myDouble.format(<span class="string">".2"</span>)</span><br></pre></td></tr></table></figure>
+</code></pre><p>String转换Double</p>
+<pre><code><figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> strVar : <span class="built_in">String</span> = <span class="string">"3.14"</span></span><br><span class="line"><span class="built_in">var</span> <span class="built_in">string</span> = NSString(<span class="built_in">string</span>: strVar)</span><br><span class="line"><span class="built_in">string</span>.doubleValue</span><br></pre></td></tr></table></figure>
+</code></pre><p>##结尾<br>由于自己的英语水平有限，和时间问题，今天就写到这里。</p>
+<p>——————————————<strong>2015-06-24</strong>—————————————</p>
+<blockquote>
+<ul>
+<li>结束时间：2015-06-24 17:50 </li>
+<li>完成内容：完成<code>Control Flow控制流</code>和<code>Functions and Closures函数和闭包</code>两个板块</li>
+<li>感受：一天接受两个内容貌似有点多，因为有大量的单词信息，还有语法信息，所以后面每天一个板块，让自己充分理解和消化。</li>
+<li>明天计划：完成<code>Objects and Classes</code>    </li>
+</ul>
+</blockquote>
+
+      
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2015/06/24/Mr.Peng学习Swift 2.0 Session 3/">Mr.Peng学习Swift 2.0 Session 3</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Mr.Peng 的个人博客">Mr.Peng</a></p>
+        <p><span>发布时间:</span>2015年06月24日 - 09时14分</p>
+        <p><span>最后更新:</span>2018年09月26日 - 01时38分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2015/06/24/Mr.Peng学习Swift 2.0 Session 3/" title="Mr.Peng学习Swift 2.0 Session 3">www.mrpeng.me/2015/06/24/Mr.Peng学习Swift 2.0 Session 3/</a>
+            <span class="copy-path" data-clipboard-text="原文: www.mrpeng.me/2015/06/24/Mr.Peng学习Swift 2.0 Session 3/　　作者: Mr.Peng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2015/06/25/Swift-2-0-Session-4-学习/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Swift 2.0 Session 4 学习
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/06/24/Swift-2-0-Session-3-学习/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Swift 2.0: Session 3 学习</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'mrpeng',
+      repo: 'pengrun.github.io',
+      oauth: {
+        client_id: 'null',
+        client_secret: 'null',
+      },
+    })
+    gitment.render('gitments')
+</script>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2015/06/25/Swift-2-0-Session-4-学习/" title="上一篇: Swift 2.0 Session 4 学习">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2015/06/24/Swift-2-0-Session-3-学习/" title="下一篇: Swift 2.0: Session 3 学习">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/25/Mr.Peng在iOS12期间申请企业级账号流程/">Mr.Peng在iOS12期间申请企业级账号流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/25/Mr.Peng iOS Charts for Objective-C with Podcocoa 集成步骤/">Mr.Peng Charts for Objective-C with Podcocoa 集成步骤</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/Mr.Peng解决xcode fetching list of team time out, member center dead 问题/">Mr.Peng解决xcode fetching list of team time out问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/25/Mr.Peng 让你的App显示在“在…中打开…”菜单中/">Mr.Peng 让你的App显示在“在…中打开…”菜单中</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/Mr.Peng收集iOS三方资源库/">Mr.Peng收集iOS三方资源库</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/25/Mr.Peng教你正确使用R.Swift/">Mr.Peng教你正确使用R.Swift</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/25/Mr.Peng提交appstore之后无法显示构建版本问题/">Mr.Peng提交appstore之后无法显示构建版本问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/01/Mr.Peng回顾2016，展望2017/">Mr.Peng回顾2016，展望2017</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/25/Mr.Peng 汉化Zend Studio 13.5.1详细图文教程/">Mr.Peng 汉化Zend Studio 13.5.1详细图文教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/25/Mr.Peng在Macbook Pro MD313 拆光驱更换固态/">Mr.Peng在Macbook Pro MD313 拆光驱更换固态</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/05/Mr.Peng收集Hexo问题集/">Mr.Peng收集Hexo问题集</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/02/Mr.Peng安装Mac下载神器aria2/">Mr.Peng安装Mac下载神器aria2</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/25/Mr.Peng学习KVC、KVO/">Mr.Peng学习KVC、KVO</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/20/Mr-Peng在Xcode6上面修改Bundle-identifier/">Mr.Peng在Xcode6修改Bundle identifier(有pod)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/15/Mr.Peng在iOS9期间申请企业级账号流程/">Mr.Peng在iOS9期间申请企业级账号流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/03/Mr.Peng解决Objective-C中Button点击延迟问题/">Mr.Peng解决Objective-C中Button点击延迟问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/21/Mr.Peng推荐Objective-C中Storyboard小技巧(适合xib)/">Mr.Peng推荐Objective-C中Storyboard小技巧(适合xib)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/10/Mr.Peng在Objective-C中用代码Auto-Layout/">Mr.Peng在Objective-C中用代码Auto-Layout</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/30/Mr.Peng解决XCode6 iOS7控制器View整体上移问题/">Mr.Peng解决XCode6 iOS7控制器View整体上移问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/27/Mr.Peng在Objective-C使用指纹解锁(附Demo)/">Mr.Peng在Objective-C使用指纹解锁(附Demo)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/26/Mr.Peng学习Swift 2.0  Session 5 枚举和结构体/">Mr.Peng学习Swift 2.0 Session 5  枚举和结构体</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/25/Mr.Peng在Hexo中为文章添加背景音乐/">Mr.Peng在Hexo中为文章添加背景音乐</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/25/Mr.Peng学习Swift 2.0 Session 4/">Mr.Peng学习Swift 2.0 Session 4</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/25/Swift-2-0-Session-4-学习/">Swift 2.0 Session 4 学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/24/Mr.Peng学习Swift 2.0 Session 3/">Mr.Peng学习Swift 2.0 Session 3</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/24/Swift-2-0-Session-3-学习/">Swift 2.0: Session 3 学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/23/Mr.Peng学习Swift 2.0 Session 2/">Mr.Peng学习Swift 2.0 Session 2</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/23/Swift-2-0-Session-2-学习/">Swift 2.0: Session 2 学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/23/Mr.Peng学习Swift 2.0 Session 1/">Mr.Peng学习Swift 2.0 Session 1</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/23/Swift-2-0-Session-1-学习/">Swift 2.0: Session 1 学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/19/Mr.Peng在Mac上VMware-Fusion7-1-0安装Windows-10/">Mr.Peng在Mac上使用VMware Fusion7.1.0 安装 Windows 10</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/18/Mr.Peng暂停搭建Hexo/">Mr.Peng暂停搭建Hexo</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/18/Mr.Peng安装Hexo过程/">Mr.Peng使用Mac安装Hexo搭建博客</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 Mr.Peng
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?e2f31621848722c8af6d759635a08987";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

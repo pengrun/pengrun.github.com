@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Mr.Peng在Objective-C中用代码Auto-Layout | Mr.Peng&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="##简介Auto Layout在2012年随着iOS6一起发布，至今已经快3年了。而我自己工作经验快两年，最近才开始接触用代码Auto Layout，的确有点不好意思（不过之前使用的都是xib和storyboard）。其实现在已经有很多对Auto Layout进行封装的三方轻框架，使用起来还比较方便，快捷。比如：   Masonry PureLayout FLKAutoLayout KeepLay">
+<meta name="keywords" content="Objective-C,Demo,Auto Layout">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mr.Peng在Objective-C中用代码Auto-Layout">
+<meta property="og:url" content="www.mrpeng.me/2015/07/10/Mr.Peng在Objective-C中用代码Auto-Layout/index.html">
+<meta property="og:site_name" content="Mr.Peng&#39;s Blog">
+<meta property="og:description" content="##简介Auto Layout在2012年随着iOS6一起发布，至今已经快3年了。而我自己工作经验快两年，最近才开始接触用代码Auto Layout，的确有点不好意思（不过之前使用的都是xib和storyboard）。其实现在已经有很多对Auto Layout进行封装的三方轻框架，使用起来还比较方便，快捷。比如：   Masonry PureLayout FLKAutoLayout KeepLay">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://7xjwbl.com1.z0.glb.clouddn.com/2015/07/10iOS%20Simulator%20Screen%20Shot%202015年7月10日%20下午3.03.01.png">
+<meta property="og:updated_time" content="2018-09-27T09:02:21.787Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mr.Peng在Objective-C中用代码Auto-Layout">
+<meta name="twitter:description" content="##简介Auto Layout在2012年随着iOS6一起发布，至今已经快3年了。而我自己工作经验快两年，最近才开始接触用代码Auto Layout，的确有点不好意思（不过之前使用的都是xib和storyboard）。其实现在已经有很多对Auto Layout进行封装的三方轻框架，使用起来还比较方便，快捷。比如：   Masonry PureLayout FLKAutoLayout KeepLay">
+<meta name="twitter:image" content="http://7xjwbl.com1.z0.glb.clouddn.com/2015/07/10iOS%20Simulator%20Screen%20Shot%202015年7月10日%20下午3.03.01.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Mr.Peng&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//img/favicon.jpg">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="//img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Mr.Peng</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">入猿未深，还待修行</p>
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives">All</a></li>
+                        
+                            <li><a href="/categories/WEB">WEB</a></li>
+                        
+                            <li><a href="/categories/MOBILE">MOBILE</a></li>
+                        
+                            <li><a href="/categories/PC">PC</a></li>
+                        
+                            <li><a href="/categories/转载">转载</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="/pengrun_520@gmail.com" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/pengrun" title="github">github</a>
+                            
+                                <a class="fl weibo" target="_blank" href="http://weibo.com/51200705" title="weibo">weibo</a>
+                            
+                                <a class="fl rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/AirDrop/" style="font-size: 10px;">AirDrop</a> <a href="/tags/Auto-Layout/" style="font-size: 10px;">Auto Layout</a> <a href="/tags/Bundle-identifier/" style="font-size: 10px;">Bundle identifier</a> <a href="/tags/Button/" style="font-size: 10px;">Button</a> <a href="/tags/Demo/" style="font-size: 11.43px;">Demo</a> <a href="/tags/Hexo/" style="font-size: 12.86px;">Hexo</a> <a href="/tags/KVO、KVC/" style="font-size: 10px;">KVO、KVC</a> <a href="/tags/MD313/" style="font-size: 10px;">MD313</a> <a href="/tags/Mac/" style="font-size: 15.71px;">Mac</a> <a href="/tags/Objective-C/" style="font-size: 17.14px;">Objective-C</a> <a href="/tags/Original/" style="font-size: 10px;">Original</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/R-Swfit/" style="font-size: 10px;">R.Swfit</a> <a href="/tags/Storyboard/" style="font-size: 10px;">Storyboard</a> <a href="/tags/Swift/" style="font-size: 20px;">Swift</a> <a href="/tags/TouchID/" style="font-size: 10px;">TouchID</a> <a href="/tags/XCode-8/" style="font-size: 14.29px;">XCode 8</a> <a href="/tags/Xcode/" style="font-size: 10px;">Xcode</a> <a href="/tags/Xcode6/" style="font-size: 10px;">Xcode6</a> <a href="/tags/Zend-Studio-13-5-1/" style="font-size: 10px;">Zend Studio 13.5.1</a> <a href="/tags/appstore/" style="font-size: 10px;">appstore</a> <a href="/tags/aria2/" style="font-size: 10px;">aria2</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/iOS-10/" style="font-size: 14.29px;">iOS 10</a> <a href="/tags/iOS12/" style="font-size: 10px;">iOS12</a> <a href="/tags/iOS9/" style="font-size: 11.43px;">iOS9</a> <a href="/tags/swift/" style="font-size: 10px;">swift</a> <a href="/tags/三方库/" style="font-size: 10px;">三方库</a> <a href="/tags/企业级账号/" style="font-size: 11.43px;">企业级账号</a> <a href="/tags/修改项目名/" style="font-size: 10px;">修改项目名</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/折腾/" style="font-size: 14.29px;">折腾</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/点击延迟/" style="font-size: 10px;">点击延迟</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/翻译/" style="font-size: 18.57px;">翻译</a> <a href="/tags/问题/" style="font-size: 10px;">问题</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://pengrun.github.io/">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">13年重庆理工大学毕业，2年iOS开发经验，目前南漂来深圳，从事车联网相关工作。16年5月离深回渝和之前的同事一起创业，2018年8月离开创业团队，目前在一家做民航系统的公司继续担任iOS开发。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Mr.Peng</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="//img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Mr.Peng</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">入猿未深，还待修行</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives">All</a></li>
+                
+                    <li><a href="/categories/WEB">WEB</a></li>
+                
+                    <li><a href="/categories/MOBILE">MOBILE</a></li>
+                
+                    <li><a href="/categories/PC">PC</a></li>
+                
+                    <li><a href="/categories/转载">转载</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="/pengrun_520@gmail.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/pengrun" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="http://weibo.com/51200705" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Mr.Peng在Objective-C中用代码Auto-Layout" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/10/Mr.Peng在Objective-C中用代码Auto-Layout/" class="article-date">
+      <time datetime="2015-07-10T08:14:53.000Z" itemprop="datePublished">2015-07-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Mr.Peng在Objective-C中用代码Auto-Layout
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/MOBILE/">MOBILE</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Auto-Layout/">Auto Layout</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Demo/">Demo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>##简介<br>Auto Layout在2012年随着iOS6一起发布，至今已经快3年了。而我自己工作经验快两年，最近才开始接触用代码Auto Layout，的确有点不好意思（不过之前使用的都是xib和storyboard）。其实现在已经有很多对Auto Layout进行封装的三方轻框架，使用起来还比较方便，快捷。比如：</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/SnapKit/Masonry" target="_blank" rel="noopener">Masonry</a></li>
+<li><a href="https://github.com/smileyborg/PureLayout" target="_blank" rel="noopener">PureLayout</a></li>
+<li><a href="https://github.com/floriankugler/FLKAutoLayout" target="_blank" rel="noopener">FLKAutoLayout</a></li>
+<li><a href="https://github.com/iMartinKiss/KeepLayout" target="_blank" rel="noopener">KeepLayout</a></li>
+</ul>
+</blockquote>
+<p>原文地址：<a href="http://www.mrpeng.me/2015/07/10/Objective-C%E4%B8%AD%E7%94%A8%E4%BB%A3%E7%A0%81Auto-Layout/">http://www.mrpeng.me/2015/07/10/Objective-C%E4%B8%AD%E7%94%A8%E4%BB%A3%E7%A0%81Auto-Layout/</a></p>
+<p>但是对于初次使用Auto Layout的我来说，工具始终是用来辅助，让我提高效率的，但是知识是一定要自己去了解和学习的，所以我觉得应该搞懂最基本，才能说我要用工具来辅助我，让我效率提高。</p>
+<a id="more"></a>
+<p>##Auto Layout<br>个人理解：<code>Auto Layout</code>就是利用对上、下、左、右的约束条件来控制视图的相对位置。<br>官方解释：</p>
+<blockquote>
+<p><code>Auto Layout</code> 是一个系统，可以让你通过创建元素之间关系的数学描述来布局应用程序的用户界面。——<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/AutolayoutPG/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010853-CH13-SW1" target="_blank" rel="noopener">《Auto Layout Guide》</a></p>
+<p><code>Auto Layout</code> 是一种基于约束的，描述性的布局系统。——<a href="https://developer.apple.com/videos/wwdc/2013/#406" target="_blank" rel="noopener">《Taking Control of Auto Layout in Xcode 5 - WWDC 2013》</a></p>
+</blockquote>
+<p>Auto Layout中有4个关键字：</p>
+<blockquote>
+<ul>
+<li>元素</li>
+<li>关系</li>
+<li>约束</li>
+<li>描述</li>
+</ul>
+</blockquote>
+<p>###元素<br>可以从数组中去理解这个关键字,比如<code>@&quot;3&quot;</code>,<code>@&quot;4&quot;</code>是<code>@[@&quot;3&quot;,@&quot;4&quot;,@&quot;5&quot;]</code>中的元素。或者从键盘中去理解，键盘里面的每个按键即是键盘的每个元素。在视图中的话，子视图就是一个元素。</p>
+<p>###关系(Relation)<br><code>关系</code>即是元素之间关系。还是用键盘举例：<code>Z</code>键和<code>X</code>键之间有关系，他们关系：<code>Z</code>键和<code>X</code>键宽度、高度一样，<code>Z</code>键在<code>X</code>键的<code>左边</code>，<code>X</code>键在<code>Z</code>键的<code>右边</code>，<code>Z</code>键和<code>X</code>键之间<code>距离相差多少</code>等等。。</p>
+<p>###约束(Constraint)<br>元素之间关系的限制就是约束。约束是Auto Layout中最重要的概念。上面提及的<code>左边</code>，<code>右边</code>，<code>距离相差多少</code>这些都是约束，限制了元素之间的关系。</p>
+<p>###描述<br>定义约束来显示元素之间的关系。继续用键盘举例，<code>Z</code>键的长宽均为<code>1厘米</code>，<code>左边</code>距离键盘的左边缘<code>15厘米</code>，<code>上边</code>距离键盘的顶部<code>8厘米</code>。这句话就可以定位<code>Z</code>键在键盘中的位置，很轻松就可以计算出<code>Z</code>键的<code>frame</code>为<code>{15.0,8.0,1.0,1.0}</code>。<br>现在<code>Z</code>键坐标确定了，那么<code>X</code>键坐标就可以相对于<code>Z</code>键来描述：顶部和<code>Z</code>键对齐，大小和<code>Z</code>键相等，位于<code>Z</code>键右侧<code>0.5厘米</code>处，就可以直接计算出<code>X</code>键的<code>frame</code>了。其实这句话中包含了元素间的关系，关系间的约束。</p>
+<p>##如何在代码中使用Auto Layout<br>无论在Xib中还是代码中使用Auto Layout，你都需要了解Auto Layout的一些必要知识。Auto Layout中约束对应的类是<code>NSLayoutConstraint</code>，一个<code>NSLayoutConstraint</code>实例代表一条约束。</p>
+<p>###NSLayoutConstraint<br>方法有两个：</p>
+<p>####第一个：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="keyword">id</span>)constraintWithItem:(<span class="keyword">id</span>)view1</span><br><span class="line">               attribute:(<span class="built_in">NSLayoutAttribute</span>)attribute1</span><br><span class="line">               relatedBy:(<span class="built_in">NSLayoutRelation</span>)relation</span><br><span class="line">                  toItem:(<span class="keyword">id</span>)view2</span><br><span class="line">               attribute:(<span class="built_in">NSLayoutAttribute</span>)attribute2</span><br><span class="line">              multiplier:(<span class="built_in">CGFloat</span>)multiplier</span><br><span class="line">                constant:(<span class="built_in">CGFloat</span>)constant;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li><code>view1</code>就是你需要操作的视图，可以理解为键盘的<code>Z</code>键；</li>
+<li><code>attribute1</code>就是<code>view1</code>中需要操作的约束，有上、下、左、右等，可以用<code>⌘ + 左键</code>点击<code>NSLayoutAttribute</code>查看具体的约束条件；</li>
+<li><code>relation</code>就是<code>view1</code>和<code>view2</code>约束之间的关系，可以用<code>⌘ + 左键</code>点击<code>NSLayoutRelation</code>查看具体的介绍，比如<code>NSLayoutRelation</code>中的<code>NSLayoutRelationEqual</code>就是表示<code>view1</code>和<code>view2</code>约束之间的关系相等。</li>
+<li><code>view2</code>就是目标视图，可以理解为整个键盘的大小；</li>
+<li><code>attribute2</code>就是<code>view2</code>中约束，</li>
+<li><code>multiplier</code>就是<code>attribute1</code>和<code>attribute2</code>的比例，比如<code>multiplier:0.8</code>表示所设置的<code>attribute1</code>是<code>attribute2</code>的0.8倍;</li>
+<li><code>constant</code>可以理解为偏移量。</li>
+</ul>
+</blockquote>
+<p>可以简单的理解为下面公式：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">view1<span class="selector-class">.attribute1</span> = view2<span class="selector-class">.attribute2</span> × multiplier + constant</span><br></pre></td></tr></table></figure>
+<p>####实践<br>本人就简单的介绍下，如果用Auto Layout在屏幕上均等分布4个ImageView如下图所示：<br><img src="http://7xjwbl.com1.z0.glb.clouddn.com/2015/07/10iOS%20Simulator%20Screen%20Shot%202015年7月10日%20下午3.03.01.png" alt="image"><br>代码如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">UIImageView</span> <span class="meta">*view</span> <span class="string">=</span> <span class="string">[[UIImageView</span> <span class="string">alloc]</span> <span class="attr">initWithImage:[UIImage</span> <span class="attr">imageNamed:@"1"]];</span></span><br><span class="line">   <span class="string">view.contentMode</span> <span class="string">=</span> <span class="string">UIViewContentModeScaleAspectFit;</span></span><br><span class="line">   <span class="string">[self.view</span> <span class="attr">addSubview:view];</span></span><br><span class="line">   <span class="string">view.backgroundColor</span> <span class="string">=</span> <span class="string">[UIColor</span> <span class="string">blueColor];</span></span><br><span class="line"></span><br><span class="line">   <span class="string">UIImageView</span> <span class="meta">*view1</span> <span class="string">=</span> <span class="string">[[UIImageView</span> <span class="string">alloc]</span> <span class="attr">initWithImage:[UIImage</span> <span class="attr">imageNamed:@"2"]];</span></span><br><span class="line">   <span class="string">[self.view</span> <span class="attr">addSubview:view1];</span></span><br><span class="line">   <span class="string">view1.contentMode</span> <span class="string">=</span> <span class="string">UIViewContentModeScaleAspectFit;</span></span><br><span class="line">   <span class="string">view1.backgroundColor</span> <span class="string">=</span> <span class="string">[UIColor</span> <span class="string">yellowColor];</span></span><br><span class="line"></span><br><span class="line">   <span class="string">UIImageView</span> <span class="meta">*view2</span> <span class="string">=</span> <span class="string">[[UIImageView</span> <span class="string">alloc]</span> <span class="attr">initWithImage:[UIImage</span> <span class="attr">imageNamed:@"3"]];</span></span><br><span class="line">   <span class="string">[self.view</span> <span class="attr">addSubview:view2];</span></span><br><span class="line">   <span class="string">view2.contentMode</span> <span class="string">=</span> <span class="string">UIViewContentModeScaleAspectFit;</span></span><br><span class="line">   <span class="string">view2.backgroundColor</span> <span class="string">=</span> <span class="string">[UIColor</span> <span class="string">greenColor];</span></span><br><span class="line"></span><br><span class="line">   <span class="string">UIImageView</span> <span class="meta">*view3</span> <span class="string">=</span> <span class="string">[[UIImageView</span> <span class="string">alloc]</span> <span class="attr">initWithImage:[UIImage</span> <span class="attr">imageNamed:@"4"]];</span></span><br><span class="line">   <span class="string">[self.view</span> <span class="attr">addSubview:view3];</span></span><br><span class="line">   <span class="string">view3.contentMode</span> <span class="string">=</span> <span class="string">UIViewContentModeScaleAspectFit;</span></span><br><span class="line">   <span class="string">view3.backgroundColor</span> <span class="string">=</span> <span class="string">[UIColor</span> <span class="string">cyanColor];</span></span><br><span class="line"></span><br><span class="line">   <span class="string">[view</span> <span class="attr">setTranslatesAutoresizingMaskIntoConstraints:NO];</span></span><br><span class="line">   <span class="string">[view1</span> <span class="attr">setTranslatesAutoresizingMaskIntoConstraints:NO];</span></span><br><span class="line">   <span class="string">[view2</span> <span class="attr">setTranslatesAutoresizingMaskIntoConstraints:NO];</span></span><br><span class="line">   <span class="string">[view3</span> <span class="attr">setTranslatesAutoresizingMaskIntoConstraints:NO];</span></span><br><span class="line"></span><br><span class="line">   <span class="string">//&lt;-------------设置View-------------&gt;</span></span><br><span class="line">   <span class="string">/**</span></span><br><span class="line">    <span class="string">*</span>  <span class="string">View的左边距和self.view的左边距一样</span></span><br><span class="line">    <span class="string">*/</span></span><br><span class="line">   <span class="string">NSLayoutConstraint</span> <span class="meta">*viewXConstraint</span> <span class="string">=</span> <span class="string">[NSLayoutConstraint</span> <span class="attr">constraintWithItem:view</span> <span class="attr">attribute:NSLayoutAttributeLeft</span> <span class="attr">relatedBy:NSLayoutRelationEqual</span> <span class="attr">toItem:self.view</span> <span class="attr">attribute:NSLayoutAttributeLeft</span> <span class="attr">multiplier:1</span> <span class="attr">constant:0.0];</span></span><br><span class="line">   <span class="string">/**</span></span><br><span class="line">    <span class="string">*</span>  <span class="string">view的中心Y坐标和self.view的中心Y坐标一样</span></span><br><span class="line">    <span class="string">*/</span></span><br><span class="line">   <span class="string">NSLayoutConstraint</span> <span class="meta">*viewYConstraint</span> <span class="string">=</span> <span class="string">[NSLayoutConstraint</span> <span class="attr">constraintWithItem:view</span> <span class="attr">attribute:NSLayoutAttributeCenterY</span> <span class="attr">relatedBy:NSLayoutRelationEqual</span> <span class="attr">toItem:self.view</span> <span class="attr">attribute:NSLayoutAttributeCenterY</span> <span class="attr">multiplier:1</span> <span class="attr">constant:0.0];</span></span><br><span class="line">   <span class="string">/**</span></span><br><span class="line">    <span class="string">*</span>  <span class="string">view的宽度等于self.view宽度的1/4即0.25</span></span><br><span class="line">    <span class="string">*/</span></span><br><span class="line">   <span class="string">NSLayoutConstraint</span> <span class="meta">*viewWidthConstraint</span> <span class="string">=</span> <span class="string">[NSLayoutConstraint</span> <span class="attr">constraintWithItem:view</span> <span class="attr">attribute:NSLayoutAttributeWidth</span> <span class="attr">relatedBy:NSLayoutRelationEqual</span> <span class="attr">toItem:self.view</span> <span class="attr">attribute:NSLayoutAttributeWidth</span> <span class="attr">multiplier:0.25f</span> <span class="attr">constant:0.0f];</span></span><br><span class="line">   <span class="string">/**</span></span><br><span class="line">    <span class="string">*</span>  <span class="string">由于UIImageView设置了图片，有了高度，就直接使用view自身的高度，当然上面的宽度也可以使用图片的宽度。</span></span><br><span class="line">    <span class="string">*/</span></span><br><span class="line">   <span class="string">NSLayoutConstraint</span> <span class="meta">*viewHeightConstraint</span> <span class="string">=</span> <span class="string">[NSLayoutConstraint</span> <span class="attr">constraintWithItem:view</span> <span class="attr">attribute:NSLayoutAttributeHeight</span> <span class="attr">relatedBy:NSLayoutRelationEqual</span> <span class="attr">toItem:view</span> <span class="attr">attribute:NSLayoutAttributeHeight</span> <span class="attr">multiplier:1</span> <span class="attr">constant:0.0f];</span></span><br><span class="line">   <span class="string">if</span> <span class="string">([[UIDevice</span> <span class="string">currentDevice].systemVersion</span> <span class="string">doubleValue]</span> <span class="string">&lt;</span> <span class="number">8.0</span><span class="string">f)</span> <span class="string">&#123;</span></span><br><span class="line">       <span class="string">viewXConstraint.active</span> <span class="string">=</span> <span class="literal">YES</span><span class="string">;</span></span><br><span class="line">       <span class="string">viewYConstraint.active</span> <span class="string">=</span> <span class="literal">YES</span><span class="string">;</span></span><br><span class="line">       <span class="string">viewWidthConstraint.active</span> <span class="string">=</span> <span class="literal">YES</span><span class="string">;</span></span><br><span class="line">       <span class="string">viewHeightConstraint.active</span> <span class="string">=</span> <span class="literal">YES</span><span class="string">;</span></span><br><span class="line">   <span class="string">&#125;</span> <span class="string">else</span> <span class="string">&#123;</span></span><br><span class="line">       <span class="string">[self.view</span> <span class="attr">addConstraints:@[viewXConstraint,</span></span><br><span class="line">                                  <span class="string">viewYConstraint,</span></span><br><span class="line">                                  <span class="string">viewWidthConstraint,</span></span><br><span class="line">                                  <span class="string">viewHeightConstraint]];</span></span><br><span class="line">   <span class="string">&#125;</span></span><br><span class="line"></span><br><span class="line">   <span class="string">//&lt;-------------设置View1-------------&gt;</span></span><br><span class="line">   <span class="string">[self.view</span> <span class="attr">addConstraints:@[</span></span><br><span class="line">                               <span class="string">//view1的x坐标等于view的最右边</span></span><br><span class="line">                               <span class="string">[NSLayoutConstraint</span> <span class="attr">constraintWithItem:view1</span></span><br><span class="line"><span class="attr">                                                            attribute:</span><span class="string">NSLayoutAttributeLeft</span></span><br><span class="line"><span class="attr">                                                            relatedBy:</span><span class="string">NSLayoutRelationEqual</span></span><br><span class="line"><span class="attr">                                                               toItem:</span><span class="string">view</span></span><br><span class="line"><span class="attr">                                                            attribute:</span><span class="string">NSLayoutAttributeRight</span></span><br><span class="line"><span class="attr">                                                           multiplier:</span><span class="number">1</span></span><br><span class="line"><span class="attr">                                                             constant:</span><span class="number">0.0</span><span class="string">],</span></span><br><span class="line">                               <span class="string">//view1的中心Y坐标等于View的中心Y坐标</span></span><br><span class="line">                               <span class="string">[NSLayoutConstraint</span> <span class="attr">constraintWithItem:view1</span></span><br><span class="line"><span class="attr">                                                            attribute:</span><span class="string">NSLayoutAttributeCenterY</span></span><br><span class="line"><span class="attr">                                                            relatedBy:</span><span class="string">NSLayoutRelationEqual</span></span><br><span class="line"><span class="attr">                                                               toItem:</span><span class="string">view</span></span><br><span class="line"><span class="attr">                                                            attribute:</span><span class="string">NSLayoutAttributeCenterY</span></span><br><span class="line"><span class="attr">                                                           multiplier:</span><span class="number">1</span></span><br><span class="line"><span class="attr">                                                             constant:</span><span class="number">0.0</span><span class="string">],</span></span><br><span class="line">                               <span class="string">//view1的宽度等于View的宽度</span></span><br><span class="line">                               <span class="string">[NSLayoutConstraint</span> <span class="attr">constraintWithItem:view1</span></span><br><span class="line"><span class="attr">                                                            attribute:</span><span class="string">NSLayoutAttributeWidth</span></span><br><span class="line"><span class="attr">                                                            relatedBy:</span><span class="string">NSLayoutRelationEqual</span></span><br><span class="line"><span class="attr">                                                               toItem:</span><span class="string">view</span></span><br><span class="line"><span class="attr">                                                            attribute:</span><span class="string">NSLayoutAttributeWidth</span></span><br><span class="line"><span class="attr">                                                           multiplier:</span><span class="number">1</span></span><br><span class="line"><span class="attr">                                                             constant:</span><span class="number">0.0</span><span class="string">],</span></span><br><span class="line">                               <span class="string">//view1的高度等于View的高度</span></span><br><span class="line">                               <span class="string">[NSLayoutConstraint</span> <span class="attr">constraintWithItem:view1</span></span><br><span class="line"><span class="attr">                                                            attribute:</span><span class="string">NSLayoutAttributeHeight</span></span><br><span class="line"><span class="attr">                                                            relatedBy:</span><span class="string">NSLayoutRelationEqual</span></span><br><span class="line"><span class="attr">                                                               toItem:</span><span class="string">view</span></span><br><span class="line"><span class="attr">                                                            attribute:</span><span class="string">NSLayoutAttributeHeight</span></span><br><span class="line"><span class="attr">                                                           multiplier:</span><span class="number">1</span></span><br><span class="line"><span class="attr">                                                             constant:</span><span class="number">0.0</span><span class="string">],</span></span><br><span class="line"></span><br><span class="line">                               <span class="string">]];</span></span><br><span class="line">   <span class="string">//&lt;-------------设置View2-------------&gt;</span></span><br><span class="line">   <span class="string">[self.view</span> <span class="attr">addConstraints:@[</span></span><br><span class="line">                               <span class="string">//view2的x坐标等于view1的最右边</span></span><br><span class="line">                               <span class="string">[NSLayoutConstraint</span> <span class="attr">constraintWithItem:view2</span></span><br><span class="line"><span class="attr">                                                            attribute:</span><span class="string">NSLayoutAttributeLeft</span></span><br><span class="line"><span class="attr">                                                            relatedBy:</span><span class="string">NSLayoutRelationEqual</span></span><br><span class="line"><span class="attr">                                                               toItem:</span><span class="string">view1</span></span><br><span class="line"><span class="attr">                                                            attribute:</span><span class="string">NSLayoutAttributeRight</span></span><br><span class="line"><span class="attr">                                                           multiplier:</span><span class="number">1</span></span><br><span class="line"><span class="attr">                                                             constant:</span><span class="number">0.0</span><span class="string">],</span></span><br><span class="line">                               <span class="string">//view2的中心Y坐标等于View1的中心Y坐标</span></span><br><span class="line">                               <span class="string">[NSLayoutConstraint</span> <span class="attr">constraintWithItem:view2</span></span><br><span class="line"><span class="attr">                                                            attribute:</span><span class="string">NSLayoutAttributeCenterY</span></span><br><span class="line"><span class="attr">                                                            relatedBy:</span><span class="string">NSLayoutRelationEqual</span></span><br><span class="line"><span class="attr">                                                               toItem:</span><span class="string">view1</span></span><br><span class="line"><span class="attr">                                                            attribute:</span><span class="string">NSLayoutAttributeCenterY</span></span><br><span class="line"><span class="attr">                                                           multiplier:</span><span class="number">1</span></span><br><span class="line"><span class="attr">                                                             constant:</span><span class="number">0.0</span><span class="string">],</span></span><br><span class="line">                               <span class="string">//view2的宽度等于View1的宽度</span></span><br><span class="line">                               <span class="string">[NSLayoutConstraint</span> <span class="attr">constraintWithItem:view2</span></span><br><span class="line"><span class="attr">                                                            attribute:</span><span class="string">NSLayoutAttributeWidth</span></span><br><span class="line"><span class="attr">                                                            relatedBy:</span><span class="string">NSLayoutRelationEqual</span></span><br><span class="line"><span class="attr">                                                               toItem:</span><span class="string">view1</span></span><br><span class="line"><span class="attr">                                                            attribute:</span><span class="string">NSLayoutAttributeWidth</span></span><br><span class="line"><span class="attr">                                                           multiplier:</span><span class="number">1</span></span><br><span class="line"><span class="attr">                                                             constant:</span><span class="number">0.0</span><span class="string">],</span></span><br><span class="line">                               <span class="string">//view2的高度等于View1的高度</span></span><br><span class="line">                               <span class="string">[NSLayoutConstraint</span> <span class="attr">constraintWithItem:view2</span></span><br><span class="line"><span class="attr">                                                            attribute:</span><span class="string">NSLayoutAttributeHeight</span></span><br><span class="line"><span class="attr">                                                            relatedBy:</span><span class="string">NSLayoutRelationEqual</span></span><br><span class="line"><span class="attr">                                                               toItem:</span><span class="string">view1</span></span><br><span class="line"><span class="attr">                                                            attribute:</span><span class="string">NSLayoutAttributeHeight</span></span><br><span class="line"><span class="attr">                                                           multiplier:</span><span class="number">1</span></span><br><span class="line"><span class="attr">                                                             constant:</span><span class="number">0.0</span><span class="string">],</span></span><br><span class="line"></span><br><span class="line">                               <span class="string">]];</span></span><br><span class="line">   <span class="string">//&lt;-------------设置View3-------------&gt;</span></span><br><span class="line">   <span class="string">[self.view</span> <span class="attr">addConstraints:@[</span></span><br><span class="line">                               <span class="string">//view3的x坐标等于view2的最右边</span></span><br><span class="line">                               <span class="string">[NSLayoutConstraint</span> <span class="attr">constraintWithItem:view3</span></span><br><span class="line"><span class="attr">                                                            attribute:</span><span class="string">NSLayoutAttributeLeft</span></span><br><span class="line"><span class="attr">                                                            relatedBy:</span><span class="string">NSLayoutRelationEqual</span></span><br><span class="line"><span class="attr">                                                               toItem:</span><span class="string">view2</span></span><br><span class="line"><span class="attr">                                                            attribute:</span><span class="string">NSLayoutAttributeRight</span></span><br><span class="line"><span class="attr">                                                           multiplier:</span><span class="number">1</span></span><br><span class="line"><span class="attr">                                                             constant:</span><span class="number">0.0</span><span class="string">],</span></span><br><span class="line">                               <span class="string">//view3的中心Y坐标等于View2的中心Y坐标</span></span><br><span class="line">                               <span class="string">[NSLayoutConstraint</span> <span class="attr">constraintWithItem:view3</span></span><br><span class="line"><span class="attr">                                                            attribute:</span><span class="string">NSLayoutAttributeCenterY</span></span><br><span class="line"><span class="attr">                                                            relatedBy:</span><span class="string">NSLayoutRelationEqual</span></span><br><span class="line"><span class="attr">                                                               toItem:</span><span class="string">view2</span></span><br><span class="line"><span class="attr">                                                            attribute:</span><span class="string">NSLayoutAttributeCenterY</span></span><br><span class="line"><span class="attr">                                                           multiplier:</span><span class="number">1</span></span><br><span class="line"><span class="attr">                                                             constant:</span><span class="number">0.0</span><span class="string">],</span></span><br><span class="line">                               <span class="string">//view3的宽度等于View2的宽度</span></span><br><span class="line">                               <span class="string">[NSLayoutConstraint</span> <span class="attr">constraintWithItem:view3</span></span><br><span class="line"><span class="attr">                                                            attribute:</span><span class="string">NSLayoutAttributeWidth</span></span><br><span class="line"><span class="attr">                                                            relatedBy:</span><span class="string">NSLayoutRelationEqual</span></span><br><span class="line"><span class="attr">                                                               toItem:</span><span class="string">view2</span></span><br><span class="line"><span class="attr">                                                            attribute:</span><span class="string">NSLayoutAttributeWidth</span></span><br><span class="line"><span class="attr">                                                           multiplier:</span><span class="number">1</span></span><br><span class="line"><span class="attr">                                                             constant:</span><span class="number">0.0</span><span class="string">],</span></span><br><span class="line">                               <span class="string">//view3的高度等于View2的高度</span></span><br><span class="line">                               <span class="string">[NSLayoutConstraint</span> <span class="attr">constraintWithItem:view3</span></span><br><span class="line"><span class="attr">                                                            attribute:</span><span class="string">NSLayoutAttributeHeight</span></span><br><span class="line"><span class="attr">                                                            relatedBy:</span><span class="string">NSLayoutRelationEqual</span></span><br><span class="line"><span class="attr">                                                               toItem:</span><span class="string">view2</span></span><br><span class="line"><span class="attr">                                                            attribute:</span><span class="string">NSLayoutAttributeHeight</span></span><br><span class="line"><span class="attr">                                                           multiplier:</span><span class="number">1</span></span><br><span class="line"><span class="attr">                                                             constant:</span><span class="number">0.0</span><span class="string">],</span></span><br><span class="line"></span><br><span class="line">                               <span class="string">]];</span></span><br></pre></td></tr></table></figure>
+<p>每条语句，我都在代码中有所注释。看上去是不是感觉很繁琐呀。如果有心的读者肯定会有疑问了，上面不是说的有两种方法么？目前为止只说了一种。对的，上面就是针对第一个方法做出了对应的实践。下面介绍下第二种比较简洁的方法：</p>
+<p>####第二种方法：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="built_in">NSArray</span> *)constraintsWithVisualFormat:(<span class="built_in">NSString</span> *)format</span><br><span class="line">                                 options:(<span class="built_in">NSLayoutFormatOptions</span>)opts</span><br><span class="line">                                 metrics:(<span class="built_in">NSDictionary</span> *)metrics</span><br><span class="line">                                   views:(<span class="built_in">NSDictionary</span> *)views;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li><code>format</code>是使用<a href="https://developer.apple.com/library/ios/documentation/userexperience/conceptual/AutolayoutPG/VisualFormatLanguage/VisualFormatLanguage.html#//apple_ref/doc/uid/TP40010853-CH3-SW1" target="_blank" rel="noopener">可视化格式语言(VFL)</a>编写的，存放布局逻辑；</li>
+<li><code>opts</code>和上面那个方法中的<code>NSLayoutAttribute</code>类似，也是限定上、下、左、右等约束；</li>
+<li><code>metrics</code>就是传入的一个size或者orign甚至是frame，根据这个参数来在<code>format</code>进行逻辑布局；</li>
+<li><code>views</code>包含了操作视图和目标视图。</li>
+</ul>
+</blockquote>
+<p>还是以上面的例子，进行实践，代码如下：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">UIImageView</span> *view = [[<span class="built_in">UIImageView</span> alloc] initWithImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"1"</span>]];</span><br><span class="line">   view.contentMode = <span class="built_in">UIViewContentModeScaleAspectFit</span>;</span><br><span class="line">   [<span class="keyword">self</span>.view addSubview:view];</span><br><span class="line">   view.backgroundColor = [<span class="built_in">UIColor</span> blueColor];</span><br><span class="line"></span><br><span class="line">   <span class="built_in">UIImageView</span> *view1 = [[<span class="built_in">UIImageView</span> alloc] initWithImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"2"</span>]];</span><br><span class="line">   [<span class="keyword">self</span>.view addSubview:view1];</span><br><span class="line">   view1.contentMode = <span class="built_in">UIViewContentModeScaleAspectFit</span>;</span><br><span class="line">   view1.backgroundColor = [<span class="built_in">UIColor</span> yellowColor];</span><br><span class="line"></span><br><span class="line">   <span class="built_in">UIImageView</span> *view2 = [[<span class="built_in">UIImageView</span> alloc] initWithImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"3"</span>]];</span><br><span class="line">   [<span class="keyword">self</span>.view addSubview:view2];</span><br><span class="line">   view2.contentMode = <span class="built_in">UIViewContentModeScaleAspectFit</span>;</span><br><span class="line">   view2.backgroundColor = [<span class="built_in">UIColor</span> greenColor];</span><br><span class="line"></span><br><span class="line">   <span class="built_in">UIImageView</span> *view3 = [[<span class="built_in">UIImageView</span> alloc] initWithImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"4"</span>]];</span><br><span class="line">   [<span class="keyword">self</span>.view addSubview:view3];</span><br><span class="line">   view3.contentMode = <span class="built_in">UIViewContentModeScaleAspectFit</span>;</span><br><span class="line">   view3.backgroundColor = [<span class="built_in">UIColor</span> cyanColor];</span><br><span class="line"></span><br><span class="line">   [view setTranslatesAutoresizingMaskIntoConstraints:<span class="literal">NO</span>];</span><br><span class="line">   [view1 setTranslatesAutoresizingMaskIntoConstraints:<span class="literal">NO</span>];</span><br><span class="line">   [view2 setTranslatesAutoresizingMaskIntoConstraints:<span class="literal">NO</span>];</span><br><span class="line">   [view3 setTranslatesAutoresizingMaskIntoConstraints:<span class="literal">NO</span>];</span><br><span class="line"></span><br><span class="line">   <span class="built_in">NSDictionary</span> *views = <span class="built_in">NSDictionaryOfVariableBindings</span>(<span class="keyword">self</span>.view, view, view1,view2, view3);</span><br><span class="line"></span><br><span class="line">   <span class="comment">//计算四分之一宽度</span></span><br><span class="line">   <span class="keyword">float</span> quarterWidth = <span class="keyword">self</span>.view.frame.size.width / <span class="number">4</span>;</span><br><span class="line">   <span class="comment">//获取图片高度</span></span><br><span class="line">   <span class="keyword">float</span> height = view.image.size.height;</span><br><span class="line"></span><br><span class="line">   <span class="built_in">NSDictionary</span> *metrics = @&#123;<span class="string">@"width"</span>:[<span class="built_in">NSNumber</span> numberWithFloat:quarterWidth],<span class="string">@"height"</span>:[<span class="built_in">NSNumber</span> numberWithFloat:height]&#125;;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//view 水平方向：离self.view的左边距为0.</span></span><br><span class="line">   [<span class="keyword">self</span>.view addConstraints:[<span class="built_in">NSLayoutConstraint</span> constraintsWithVisualFormat:<span class="string">@"H:|-0-[view(==width)]"</span> options:<span class="number">0</span> metrics:metrics views:views]];</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* view的中心Y坐标等于self.view的中心Y坐标。</span></span><br><span class="line"><span class="comment">    * 这里因为用到了具体的宽度和高度，如果用VFL来设置居中的话，会报错的。只能辅助用第一种方法来解决此问题。</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="built_in">NSLayoutConstraint</span> *viewYConstraint = [<span class="built_in">NSLayoutConstraint</span> constraintWithItem:view attribute:<span class="built_in">NSLayoutAttributeCenterY</span> relatedBy:<span class="built_in">NSLayoutRelationEqual</span> toItem:<span class="keyword">self</span>.view attribute:<span class="built_in">NSLayoutAttributeCenterY</span> multiplier:<span class="number">1</span> constant:<span class="number">0.0</span>];</span><br><span class="line">   [<span class="keyword">self</span>.view addConstraint:viewYConstraint];</span><br><span class="line"></span><br><span class="line">   <span class="comment">//设置view和view1、view1和view2、view2和view3间隔为0。其中 -0- 可以省去。</span></span><br><span class="line">   [<span class="keyword">self</span>.view addConstraints:[<span class="built_in">NSLayoutConstraint</span> constraintsWithVisualFormat:<span class="string">@"H:[view]-0-[view1(==view)]-0-[view2(==view1)]-0-[view3(==view2)]"</span> options:<span class="built_in">NSLayoutFormatAlignAllBottom</span>|<span class="built_in">NSLayoutFormatAlignAllTop</span> metrics:<span class="literal">nil</span> views:views]];</span><br></pre></td></tr></table></figure>
+<p>###Demo<br><a href="https://github.com/pengrun/AutoLayoutDemo" target="_blank" rel="noopener">https://github.com/pengrun/AutoLayoutDemo</a></p>
+<p>###总结<br>从代码简洁度来说，是不是用第二种方法样简洁些，但是如果说逻辑清晰的话，还是建议用第一种。不过在具体的开发中，还要根据自己项目的实际情况来协同合作。</p>
+<p>参考文章：<br><a href="http://xuexuefeng.com/autolayout/" target="_blank" rel="noopener">iOS 开发实践之 Auto Layout</a><br><a href="http://blog.csdn.net/chujiujiao/article/details/13020813" target="_blank" rel="noopener">IOS Autolayout(VFL) 处理子视图居中</a><br><a href="http://www.cnblogs.com/xieyajie/p/4612697.html" target="_blank" rel="noopener">IOS页面自动布局 之 NSLayoutConstraint基础篇</a></p>
+
+      
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2015/07/10/Mr.Peng在Objective-C中用代码Auto-Layout/">Mr.Peng在Objective-C中用代码Auto-Layout</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Mr.Peng 的个人博客">Mr.Peng</a></p>
+        <p><span>发布时间:</span>2015年07月10日 - 16时14分</p>
+        <p><span>最后更新:</span>2018年09月27日 - 17时02分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2015/07/10/Mr.Peng在Objective-C中用代码Auto-Layout/" title="Mr.Peng在Objective-C中用代码Auto-Layout">www.mrpeng.me/2015/07/10/Mr.Peng在Objective-C中用代码Auto-Layout/</a>
+            <span class="copy-path" data-clipboard-text="原文: www.mrpeng.me/2015/07/10/Mr.Peng在Objective-C中用代码Auto-Layout/　　作者: Mr.Peng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2015/07/21/Mr.Peng推荐Objective-C中Storyboard小技巧(适合xib)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Mr.Peng推荐Objective-C中Storyboard小技巧(适合xib)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/06/30/Mr.Peng解决XCode6 iOS7控制器View整体上移问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mr.Peng解决XCode6 iOS7控制器View整体上移问题</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'mrpeng',
+      repo: 'pengrun.github.io',
+      oauth: {
+        client_id: 'null',
+        client_secret: 'null',
+      },
+    })
+    gitment.render('gitments')
+</script>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2015/07/21/Mr.Peng推荐Objective-C中Storyboard小技巧(适合xib)/" title="上一篇: Mr.Peng推荐Objective-C中Storyboard小技巧(适合xib)">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2015/06/30/Mr.Peng解决XCode6 iOS7控制器View整体上移问题/" title="下一篇: Mr.Peng解决XCode6 iOS7控制器View整体上移问题">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/25/Mr.Peng在iOS12期间申请企业级账号流程/">Mr.Peng在iOS12期间申请企业级账号流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/25/Mr.Peng iOS Charts for Objective-C with Podcocoa 集成步骤/">Mr.Peng Charts for Objective-C with Podcocoa 集成步骤</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/Mr.Peng解决xcode fetching list of team time out, member center dead 问题/">Mr.Peng解决xcode fetching list of team time out问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/25/Mr.Peng 让你的App显示在“在…中打开…”菜单中/">Mr.Peng 让你的App显示在“在…中打开…”菜单中</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/Mr.Peng收集iOS三方资源库/">Mr.Peng收集iOS三方资源库</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/25/Mr.Peng教你正确使用R.Swift/">Mr.Peng教你正确使用R.Swift</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/25/Mr.Peng提交appstore之后无法显示构建版本问题/">Mr.Peng提交appstore之后无法显示构建版本问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/01/Mr.Peng回顾2016，展望2017/">Mr.Peng回顾2016，展望2017</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/25/Mr.Peng 汉化Zend Studio 13.5.1详细图文教程/">Mr.Peng 汉化Zend Studio 13.5.1详细图文教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/25/Mr.Peng在Macbook Pro MD313 拆光驱更换固态/">Mr.Peng在Macbook Pro MD313 拆光驱更换固态</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/05/Mr.Peng收集Hexo问题集/">Mr.Peng收集Hexo问题集</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/02/Mr.Peng安装Mac下载神器aria2/">Mr.Peng安装Mac下载神器aria2</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/25/Mr.Peng学习KVC、KVO/">Mr.Peng学习KVC、KVO</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/20/Mr-Peng在Xcode6上面修改Bundle-identifier/">Mr.Peng在Xcode6修改Bundle identifier(有pod)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/15/Mr.Peng在iOS9期间申请企业级账号流程/">Mr.Peng在iOS9期间申请企业级账号流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/03/Mr.Peng解决Objective-C中Button点击延迟问题/">Mr.Peng解决Objective-C中Button点击延迟问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/21/Mr.Peng推荐Objective-C中Storyboard小技巧(适合xib)/">Mr.Peng推荐Objective-C中Storyboard小技巧(适合xib)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/10/Mr.Peng在Objective-C中用代码Auto-Layout/">Mr.Peng在Objective-C中用代码Auto-Layout</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/30/Mr.Peng解决XCode6 iOS7控制器View整体上移问题/">Mr.Peng解决XCode6 iOS7控制器View整体上移问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/27/Mr.Peng在Objective-C使用指纹解锁(附Demo)/">Mr.Peng在Objective-C使用指纹解锁(附Demo)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/26/Mr.Peng学习Swift 2.0  Session 5 枚举和结构体/">Mr.Peng学习Swift 2.0 Session 5  枚举和结构体</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/25/Mr.Peng在Hexo中为文章添加背景音乐/">Mr.Peng在Hexo中为文章添加背景音乐</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/25/Mr.Peng学习Swift 2.0 Session 4/">Mr.Peng学习Swift 2.0 Session 4</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/25/Swift-2-0-Session-4-学习/">Swift 2.0 Session 4 学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/24/Mr.Peng学习Swift 2.0 Session 3/">Mr.Peng学习Swift 2.0 Session 3</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/24/Swift-2-0-Session-3-学习/">Swift 2.0: Session 3 学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/23/Mr.Peng学习Swift 2.0 Session 2/">Mr.Peng学习Swift 2.0 Session 2</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/23/Swift-2-0-Session-2-学习/">Swift 2.0: Session 2 学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/23/Mr.Peng学习Swift 2.0 Session 1/">Mr.Peng学习Swift 2.0 Session 1</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/23/Swift-2-0-Session-1-学习/">Swift 2.0: Session 1 学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/19/Mr.Peng在Mac上VMware-Fusion7-1-0安装Windows-10/">Mr.Peng在Mac上使用VMware Fusion7.1.0 安装 Windows 10</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/18/Mr.Peng暂停搭建Hexo/">Mr.Peng暂停搭建Hexo</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/18/Mr.Peng安装Hexo过程/">Mr.Peng使用Mac安装Hexo搭建博客</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 Mr.Peng
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?e2f31621848722c8af6d759635a08987";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
