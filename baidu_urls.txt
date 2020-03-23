@@ -28,8 +28,8 @@ www.mrpeng.me/2015/06/24/Swift-2-0-Session-3-学习/
 www.mrpeng.me/2015/06/24/Mr.Peng学习Swift 2.0 Session 3/
 www.mrpeng.me/2015/06/23/Swift-2-0-Session-2-学习/
 www.mrpeng.me/2015/06/23/Mr.Peng学习Swift 2.0 Session 2/
-www.mrpeng.me/2015/06/23/Mr.Peng学习Swift 2.0 Session 1/
 www.mrpeng.me/2015/06/23/Swift-2-0-Session-1-学习/
+www.mrpeng.me/2015/06/23/Mr.Peng学习Swift 2.0 Session 1/
 www.mrpeng.me/2015/06/19/Mr.Peng在Mac上VMware-Fusion7-1-0安装Windows-10/
 www.mrpeng.me/2015/06/18/Mr.Peng暂停搭建Hexo/
 www.mrpeng.me/2015/06/18/Mr.Peng安装Hexo过程/
